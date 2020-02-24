@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../xproc-batch/xproc-tools/schemas/manifest.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<manifest xmlns="http://www.corbas.co.uk/ns/transforms/data" xml:base=".">
+    
+    <group description="XLSX normalisation steps" xml:base="../../xslt/common/">
+        <item href="XLSX-UTIL_normalisation.xsl" description=""/>
+    </group>
+    
+</manifest>
