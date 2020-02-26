@@ -20,7 +20,7 @@
     
     <!-- Get first row -->
     <xsl:template match="sml:row" mode="XLSX2XML_MAP">
-        <providermap id="tokenize(base-uri(.),'/')[last()]">
+        <providermap id="{tokenize(base-uri(.),'/')[last()]}">
             <xsl:apply-templates select="*" mode="XLSX2XML_MAP"/>
         </providermap>
     </xsl:template>
