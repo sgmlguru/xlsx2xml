@@ -2,8 +2,15 @@
 <?xml-model href="../../../xproc-batch/xproc-tools/schemas/manifest.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <manifest xmlns="http://www.corbas.co.uk/ns/transforms/data" xml:base=".">
     
-    <group description="XLSX normalisation steps" xml:base="../../xslt/common/">
-        <item href="XLSX-UTIL_normalisation.xsl" description=""/>
+    <group description="XLSX normalisation and cleanup steps" xml:base="../../xslt/common/">
+        <item href="XLSX-UTIL_normalisation.xsl" description="Include shared strings inline"/>
+        <item href="XLSX-UTIL_cleanup.xsl" description="Remove unneeded XLSX elements"/>
+    </group>
+    
+    <group description="Convert XLSX to XML" xml:base="../../xslt/common/">
+        <item href="XLSX2XML_structure.xsl" description="Convert to the main wrappers and generate a coordinate lookup"/>
+        <item href="XLSX2XML_courses.xsl" description="Convert rows to courses"/>
+        <item href="XLSX2XML_dates.xsl" description="Convert ECMA-376 dates to human-readable format"/>
     </group>
     
 </manifest>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<providermap xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:x15="http://schemas.microsoft.com/office/spreadsheetml/2010/11/main"
+             xmlns:xr="http://schemas.microsoft.com/office/spreadsheetml/2014/revision"
+             xmlns:xr6="http://schemas.microsoft.com/office/spreadsheetml/2016/revision6"
+             xmlns:xr10="http://schemas.microsoft.com/office/spreadsheetml/2016/revision10"
+             xmlns:xr2="http://schemas.microsoft.com/office/spreadsheetml/2015/revision2"
+             xmlns:sml="http://schemas.openxmlformats.org/spreadsheetml/2006/main"
+             id="tokenize(base-uri(.),'/')[last()]">
+   <item coord="A1" source="Course Code" target="course-uniqueIdentifier">Course Code</item>
+   <item coord="B1" source="StartDate" target="duration-start">StartDate</item>
+   <item coord="C1" source="EndDate" target="duration-end">EndDate</item>
+   <item coord="D1" source="Site_Desc" target="location-description">Site_Desc</item>
+   <item coord="E1" source="LocationDesc" target="location/place">LocationDesc</item>
+   <item coord="F1" source="Faculty" target="provider-field">Faculty</item>
+   <item coord="G1" source="Sector" target="provider-field">Sector</item>
+   <item coord="H1"
+         source="MIS Subject category"
+         target="categories/category">MIS Subject category</item>
+   <item coord="I1"
+         source="Findcourses category 1"
+         target="categories/category">Findcourses category 1</item>
+   <item coord="J1"
+         source="Findcourses category 2"
+         target="categories/category">Findcourses category 2</item>
+   <item coord="K1" source="WebsiteCourseTitle" target="course/@name">WebsiteCourseTitle</item>
+   <item coord="L1" source="Length_Days" target="duration-days">Length_Days</item>
+   <item coord="M1" source="Length_Weeks" target="duration-weeks">Length_Weeks</item>
+   <item coord="N1" source="Length_Years" target="duration-years">Length_Years</item>
+   <item coord="O1" source="Times" target="course-field">Times</item>
+   <item coord="P1" source="Mode" target="event-pace">Mode</item>
+   <item coord="Q1" source="16free8" target="event-price">16free8</item>
+   <item coord="R1" source="Adult" target="event-price">Adult</item>
+   <item coord="S1" source="Web address to the course" target="course/link">Web address to the course</item>
+   <item coord="T1" source="QualificationType" target="course-field">QualificationType</item>
+   <item coord="U1" source="PageSummary" target="course-field">PageSummary</item>
+   <item coord="V1" source="pagebody" target="course-field">pagebody</item>
+   <item coord="W1" source="WhatIllLearn" target="course-field">WhatIllLearn</item>
+   <item coord="X1" source="HowIllLearn" target="course-field">HowIllLearn</item>
+   <item coord="Y1" source="HowIllBeAssessed" target="course-field">HowIllBeAssessed</item>
+   <item coord="Z1" source="EntryRequirements" target="course-field">EntryRequirements</item>
+   <item coord="AA1" source="HowToApply" target="course-field">HowToApply</item>
+</providermap>
