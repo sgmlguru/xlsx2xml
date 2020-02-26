@@ -15,7 +15,7 @@
     exclude-result-prefixes="xs"
     version="2.0">
     
-    <!-- This con   verts spreadsheet dates in ECMA-376 format to human-readable dates -->
+    <!-- This converts spreadsheet dates in ECMA-376 format to human-readable dates -->
     
     <xsl:output method="xml" indent="yes"/>
     
@@ -28,11 +28,52 @@
     <xsl:template match="fc:course" mode="XLSX2XML_DATES">
         <xsl:variable name="date-fields">
             <fields>
-                <xsl:copy-of select="providermap/item[matches(@target,'^(duration-start|duration-end)$')]"/>
+                <xsl:apply-templates select="preceding-sibling::providermap/item[matches(@target,'^(duration-start)$')] | preceding-sibling::providermap/item[matches(@target,'^(duration-end)$')]" mode="XLSX2XML_DATES"/>
             </fields>
         </xsl:variable>
         <xsl:copy copy-namespaces="no">
-            <xsl:apply-templates select="node()" mode="XLSX2XML_DATES"/>
+            <xsl:copy-of select="providermap"/>
+            <xsl:apply-templates select="sml:c" mode="XLSX2XML_DATES">
+                <xsl:with-param name="date-fields" select="$date-fields"/>
+            </xsl:apply-templates>
+        </xsl:copy>
+    </xsl:template>
+    
+    
+    <xsl:template match="sml:c" mode="XLSX2XML_DATES">
+        <xsl:param name="date-fields"/>
+        <xsl:variable name="match-strings" select="$date-fields//item/@coord" as="item()*"/>
+        <xsl:variable name="value" select="sml:v/text()"/>
+        <xsl:variable name="r" select="@r" as="xs:string"/>
+        <xsl:variable name="c" select="." as="item()"/>
+        
+        <xsl:copy copy-namespaces="no">
+            <xsl:copy-of select="@*"/>
+            
+            <!-- Get position of a matched lookup item - this corresponds to a start or end date -->
+            <xsl:variable name="match-position">
+                <xsl:for-each select="$date-fields//item">
+                    <xsl:variable name="coord" select="@coord"/>
+                    <xsl:variable name="target" select="@target"/>
+                    <xsl:choose>
+                        <xsl:when test="matches($r,concat($coord,'[0-9]+$'))">
+                            <xsl:value-of select="position()"/>
+                        </xsl:when>
+                    </xsl:choose>
+                </xsl:for-each>
+            </xsl:variable>
+            
+            <xsl:choose>
+                <xsl:when test="$match-position != ''">
+                    <xsl:element name="{$date-fields//item[position() = number($match-position)]/@target}" namespace="http://www.sgmlguru/ns/xproc/steps">
+                        <xsl:value-of select="sg:todate($value)"/>
+                    </xsl:element>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="$value"/>
+                </xsl:otherwise>
+            </xsl:choose>
+            
         </xsl:copy>
     </xsl:template>
     
@@ -46,6 +87,7 @@
     </xsl:template>
     
     
+    <!-- Convert ECMA-376 value to date (Excel dates start from 1900-01-01) -->
     <xsl:function name="sg:todate" as="xs:dateTime">
         <xsl:param name="days" as="xs:double"/>
         <xsl:sequence select="xs:dateTime('1900-01-01T00:00:00') + xs:dayTimeDuration(concat('P',xs:integer($days),'D'))"/>
