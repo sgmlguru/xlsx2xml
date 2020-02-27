@@ -54,7 +54,7 @@
                     <xsl:value-of select="'location-description'"/>
                 </xsl:when>
                 <xsl:when test="$source='LocationDesc'">
-                    <xsl:value-of select="'location/place'"/>
+                    <xsl:value-of select="'location-place'"/>
                 </xsl:when>
                 <xsl:when test="$source='Faculty'">
                     <xsl:value-of select="'provider-field'"/>
@@ -72,7 +72,7 @@
                     <xsl:value-of select="'categories/category'"/>
                 </xsl:when>
                 <xsl:when test="$source='WebsiteCourseTitle'">
-                    <xsl:value-of select="'course/@name'"/>
+                    <xsl:value-of select="'course-name'"/>
                 </xsl:when>
                 <xsl:when test="$source='Length_Days'">
                     <xsl:value-of select="'duration-days'"/>
