@@ -47,7 +47,7 @@
     
     
     <xsl:template match="sml:sheetData" mode="XLSX2XML_STRUCTURE">
-        <xsl:element name="courses">
+        <xsl:element name="courses" namespace="http://educations.com/XmlImport">
             
             <!-- Create a lookup -->
             <xsl:apply-templates select="sml:row[1]" mode="XLSX2XML_MAP"/>
