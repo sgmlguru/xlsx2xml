@@ -11,6 +11,7 @@
         <item href="XLSX2XML_structure.xsl" description="Convert to the main wrappers and generate a coordinate lookup"/>
         <item href="XLSX2XML_courses.xsl" description="Convert rows to courses"/>
         <item href="XLSX2XML_dates.xsl" description="Convert ECMA-376 dates to human-readable format"/>
+        <item href="XLSX2XML_locations.xsl" description="Extract location info from course data to locations wrapper, leave behind converted location info in courses"/>
     </group>
     
 </manifest>
