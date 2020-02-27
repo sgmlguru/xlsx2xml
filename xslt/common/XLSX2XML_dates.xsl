@@ -46,35 +46,36 @@
         <xsl:variable name="value" select="sml:v/text()"/>
         <xsl:variable name="r" select="@r" as="xs:string"/>
         <xsl:variable name="c" select="." as="item()"/>
+            
+        <!-- Get position of a matched lookup item - this corresponds to a start or end date -->
+        <xsl:variable name="match-position">
+            <xsl:for-each select="$date-fields//item">
+                <xsl:variable name="coord" select="@coord"/>
+                <xsl:variable name="target" select="@target"/>
+                <xsl:choose>
+                    <xsl:when test="matches($r,concat($coord,'[0-9]+$'))">
+                        <xsl:value-of select="position()"/>
+                    </xsl:when>
+                </xsl:choose>
+            </xsl:for-each>
+        </xsl:variable>
         
-        <xsl:copy copy-namespaces="no">
-            <xsl:copy-of select="@*"/>
-            
-            <!-- Get position of a matched lookup item - this corresponds to a start or end date -->
-            <xsl:variable name="match-position">
-                <xsl:for-each select="$date-fields//item">
-                    <xsl:variable name="coord" select="@coord"/>
-                    <xsl:variable name="target" select="@target"/>
-                    <xsl:choose>
-                        <xsl:when test="matches($r,concat($coord,'[0-9]+$'))">
-                            <xsl:value-of select="position()"/>
-                        </xsl:when>
-                    </xsl:choose>
-                </xsl:for-each>
-            </xsl:variable>
-            
-            <xsl:choose>
-                <xsl:when test="$match-position != ''">
-                    <xsl:element name="{$date-fields//item[position() = number($match-position)]/@target}" namespace="http://www.sgmlguru/ns/xproc/steps">
-                        <xsl:value-of select="sg:todate($value)"/>
-                    </xsl:element>
-                </xsl:when>
-                <xsl:otherwise>
+        <!-- Convert to @target-named element if there is a match, otherwise keep the <c> -->
+        <xsl:choose>
+            <xsl:when test="$match-position != ''">
+                <xsl:element name="{$date-fields//item[position() = number($match-position)]/@target}" namespace="http://www.sgmlguru/ns/xproc/steps">
+                    <xsl:copy-of select="@*"/>
+                    <xsl:value-of select="sg:todate($value)"/>
+                </xsl:element>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:copy copy-namespaces="no">
+                    <xsl:copy-of select="@*"/>
                     <xsl:value-of select="$value"/>
-                </xsl:otherwise>
-            </xsl:choose>
+                </xsl:copy>
+            </xsl:otherwise>
+        </xsl:choose>
             
-        </xsl:copy>
     </xsl:template>
     
     
