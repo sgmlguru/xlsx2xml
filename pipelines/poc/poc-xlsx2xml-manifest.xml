@@ -12,6 +12,7 @@
         <item href="XLSX2XML_courses.xsl" description="Convert rows to courses"/>
         <item href="XLSX2XML_dates.xsl" description="Convert ECMA-376 dates to human-readable format"/>
         <item href="XLSX2XML_locations.xsl" description="Extract location info from course data to locations wrapper, leave behind converted location info in courses"/>
+        <item href="XLSX2XML_fields.xsl" description="Convert every remaining cell to @target-mamed elements"/>
     </group>
     
 </manifest>
