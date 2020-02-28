@@ -35,6 +35,26 @@
     <xsl:template match="sml:sst" mode="XLSX-UTIL_CLEANUP"/>
     
     
+    <!-- Remove -->
+    <xsl:template match="mc:AlternateContent" mode="XLSX-UTIL_CLEANUP"/>
+    
+    
+    <!-- Remove but add the ID as a PI -->
+    <xsl:template match="xr:revisionPtr" mode="XLSX-UTIL_CLEANUP">
+        <xsl:processing-instruction name="{name(@documentId)}" select="@documentId"/>
+    </xsl:template>
+    
+    
+    <!-- Keep all attributes as PIs -->
+    <xsl:template match="sml:sheet | sml:dimension | sml:tableParts | sml:tablePart" mode="XLSX-UTIL_CLEANUP">
+        <xsl:variable name="name" select="local-name(.)"/>
+        <xsl:for-each select="@*">
+            <xsl:processing-instruction name="{concat($name,'-',local-name(.))}" select="."/>
+        </xsl:for-each>
+        <xsl:apply-templates select="*" mode="XLSX-UTIL_CLEANUP"/>
+    </xsl:template>
+    
+    
     <!-- ID transform -->
     <xsl:template match="node()" mode="XLSX-UTIL_CLEANUP">
         <xsl:copy copy-namespaces="no">
