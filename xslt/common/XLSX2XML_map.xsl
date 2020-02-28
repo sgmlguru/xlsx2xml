@@ -99,7 +99,7 @@
                     <xsl:value-of select="'course-link'"/>
                 </xsl:when>
                 <xsl:when test="$source='QualificationType'">
-                    <xsl:value-of select="'course-field'"/>
+                    <xsl:value-of select="'qualification-type'"/>
                 </xsl:when>
                 <xsl:when test="$source='PageSummary'">
                     <xsl:value-of select="'course-field'"/>
