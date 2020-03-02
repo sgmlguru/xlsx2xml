@@ -81,8 +81,12 @@
         </xsl:copy>
         
         <!-- Unique locations with temp elements for place and description in sg namespace -->
-        <xsl:copy-of select="$unique-locations"/>
-        
+        <xsl:element name="locations" namespace="http://educations.com/XmlImport">
+            <xsl:apply-templates select="$unique-locations//fc:location" mode="XLSX2XML_LOCATIONS">
+                <xsl:sort select="sg:location-place"/>
+                <xsl:sort select="sg:location-description"/>
+            </xsl:apply-templates>
+        </xsl:element>
     </xsl:template>
     
     
