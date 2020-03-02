@@ -29,6 +29,7 @@
     
     <xsl:template match="sml:workbook" mode="XLSX2XML_STRUCTURE">
         <xsl:element name="import" namespace="http://educations.com/XmlImport">
+            <xsl:attribute name="version" select="'3.0'"/>
             <xsl:apply-templates select="node()" mode="XLSX2XML_STRUCTURE"/>
         </xsl:element>
     </xsl:template>
@@ -41,6 +42,7 @@
     
     <xsl:template match="sml:worksheet" mode="XLSX2XML_STRUCTURE">
         <xsl:element name="provider" namespace="http://educations.com/XmlImport">
+            <xsl:attribute name="uniqueIdentifier" select="substring-before(/*/@provider,'.xml')"/>
             <xsl:apply-templates select="node()" mode="XLSX2XML_STRUCTURE"/>
         </xsl:element>
     </xsl:template>
