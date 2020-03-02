@@ -23,18 +23,18 @@
             <xsl:copy-of select="@*"/>
             
             <xsl:element name="contentFields" namespace="http://educations.com/XmlImport">
-                <xsl:apply-templates select="sg:course-field" mode="EXC2XI_CONTENT-FIELDS"/>
+                <xsl:apply-templates select="sg:course-field | sg:course-description | sg:provider-field" mode="EXC2XI_CONTENT-FIELDS"/>
             </xsl:element>
             
-            <xsl:apply-templates select="node()[not(self::sg:course-field)]" mode="EXC2XI_CONTENT-FIELDS"/>
+            <xsl:apply-templates select="node()[not(self::sg:course-field) and not(self::sg:provider-field) and not(self::sg:course-description)]" mode="EXC2XI_CONTENT-FIELDS"/>
         </xsl:copy>
     </xsl:template>
     
     
-    <xsl:template match="sg:course-field" mode="EXC2XI_CONTENT-FIELDS">
+    <xsl:template match="sg:course-field | sg:provider-field | sg:course-description" mode="EXC2XI_CONTENT-FIELDS">
         <xsl:element name="field" namespace="http://educations.com/XmlImport">
-            <xsl:attribute name="xsi:type" select="'custom'"/>
-            <xsl:attribute name="name" select="@source"/>
+            <xsl:attribute name="xsi:type" select="if (@source = 'pagebody') then ('default') else ('custom')"/>
+            <xsl:attribute name="name" select="if (@source = 'pagebody') then ('description') else (@source)"/>
             
             <xsl:if test="normalize-space(text()) != ''">
                 <xsl:text disable-output-escaping="yes">&lt;![CDATA[</xsl:text>

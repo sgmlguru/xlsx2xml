@@ -37,6 +37,7 @@
     </xsl:template>
     
     
+    <!-- FIXME: Rewrite this into config file lookup -->
     <xsl:template name="target">
         <xsl:param name="source"/>
         <xsl:attribute name="target">
@@ -105,7 +106,7 @@
                     <xsl:value-of select="'course-field'"/>
                 </xsl:when>
                 <xsl:when test="$source='pagebody'">
-                    <xsl:value-of select="'course-field'"/>
+                    <xsl:value-of select="'course-description'"/>
                 </xsl:when>
                 <xsl:when test="$source='WhatIllLearn'">
                     <xsl:value-of select="'course-field'"/>
