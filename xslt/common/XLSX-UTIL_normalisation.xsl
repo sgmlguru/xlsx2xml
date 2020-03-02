@@ -26,6 +26,15 @@
     </xsl:template>
     
     
+    <xsl:template match="sml:workbook" mode="XLSX-UTIL_NORMALISATION">
+        <xsl:copy copy-namespaces="no">
+            <xsl:copy-of select="@*"/>
+            <xsl:attribute name="provider" select="tokenize(base-uri(/*),'/')[last()]"/>
+            <xsl:apply-templates select="node()" mode="XLSX-UTIL_NORMALISATION"/>
+        </xsl:copy>
+    </xsl:template>
+    
+    
     <!-- Look up shared strings -->
     <xsl:template match="sml:c[@t='s']" mode="XLSX-UTIL_NORMALISATION">
         <xsl:variable name="string-no" select="number(sml:v/text()) + 1"/>
