@@ -63,13 +63,13 @@
                     <xsl:value-of select="'provider-field'"/>
                 </xsl:when>
                 <xsl:when test="$source='MIS Subject category'">
-                    <xsl:value-of select="'categories-category'"/>
+                    <xsl:value-of select="'categories-categoryMIS'"/>
                 </xsl:when>
                 <xsl:when test="$source='Findcourses category 1'">
-                    <xsl:value-of select="'categories-category'"/>
+                    <xsl:value-of select="'categories-category1'"/>
                 </xsl:when>
                 <xsl:when test="$source='Findcourses category 2'">
-                    <xsl:value-of select="'categories-category'"/>
+                    <xsl:value-of select="'categories-category2'"/>
                 </xsl:when>
                 <xsl:when test="$source='WebsiteCourseTitle'">
                     <xsl:value-of select="'course-name'"/>
