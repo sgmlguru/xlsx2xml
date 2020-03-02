@@ -18,6 +18,9 @@
     <group description="Convert from exchange intermediate to target XML format" xml:base="../../xslt/exc2xi/">
         <item href="EXC2XI_course.xsl" description="Add course attributes"/>
         <item href="EXC2XI_content-fields.xsl" description="Add custom content fields and make the contents into CDATA sections"/>
+        <item href="EXC2XI_course-links.xsl" description="Convert course-links to links"/>
+        <item href="EXC2XI_categories.xsl" description="Convert category info"/>
+        <item href="EXC2XI_exc-locations.xsl" description="Convert locations info from exc to target"/>
         
     </group>
     
