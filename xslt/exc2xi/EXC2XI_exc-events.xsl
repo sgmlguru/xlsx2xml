@@ -42,20 +42,33 @@
                         <xsl:attribute
                             name="uniqueIdentifier"
                             select="concat($id,'-',count(preceding-sibling::sg:event-price[matches(text(),'^free$','i') or number(text())]) + 1)"/>
-                        <xsl:attribute name="locationUID" select="$location-id"/>
+                        
+                        <!-- FIXME: Need logic to determine xsi:type properly -->
+                        <xsl:if test="$location-id != ''">
+                            <xsl:attribute name="locationUID" select="$location-id"/>
+                            <xsl:attribute name="xsi:type" select="'LocationEvent'"/>
+                        </xsl:if>
+                        
+                        <!-- FIXME: Need logic to determine delivery method (open class, online, etc) -->
+                        <xsl:attribute name="deliveryMethod" select="'Open class'"/>
                         
                         <xsl:processing-instruction name="source">
                             <xsl:value-of select="@source"/>
                         </xsl:processing-instruction>
                         
+                        <!-- FIXME: Currently no way to determine currency or VAT details -->
                         <xsl:element name="price" namespace="http://educations.com/XmlImport">
                             <xsl:attribute name="price" select="if ($current='free') then (0) else (number($current))"/>
                         </xsl:element>
                         
+                        <!-- FIXME: Needs proper logic -->
                         <xsl:element name="start" namespace="http://educations.com/XmlImport">
-                            <xsl:attribute name="startDate" select="$start-date"/>
-                            <xsl:if test="$start-date != $end-date">
-                                <xsl:attribute name="endDate" select="$end-date"/>
+                            <xsl:if test="$start-date != ''">
+                                <xsl:attribute name="xsi:type" select="'Fixed'"/>
+                                <xsl:attribute name="startDate" select="$start-date"/>
+                                <xsl:if test="$start-date != $end-date">
+                                    <xsl:attribute name="endDate" select="$end-date"/>
+                                </xsl:if>
                             </xsl:if>
                         </xsl:element>
                     </xsl:element>
