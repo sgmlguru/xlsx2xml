@@ -48,6 +48,10 @@
     <xsl:template match="(sg:duration-years | sg:duration-weeks | sg:duration-days)[.=0]" mode="EXC2XI_EXC-DURATION"/>
     
     
+    <!-- Remove event pace -->
+    <xsl:template match="sg:event-pace" mode="EXC2XI_EXC-DURATION"/>
+    
+    
     <!-- ID transform -->
     <xsl:template match="node()" mode="EXC2XI_EXC-DURATION">
         <xsl:copy copy-namespaces="no">
