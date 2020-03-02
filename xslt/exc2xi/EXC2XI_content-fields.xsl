@@ -36,9 +36,12 @@
             <xsl:attribute name="xsi:type" select="'custom'"/>
             <xsl:attribute name="name" select="@source"/>
             
-            <xsl:text disable-output-escaping="yes">&lt;![CDATA[</xsl:text>
-            <xsl:value-of select="text()" disable-output-escaping="yes"/>
-            <xsl:text disable-output-escaping="yes">]]&gt;</xsl:text>
+            <xsl:if test="normalize-space(text()) != ''">
+                <xsl:text disable-output-escaping="yes">&lt;![CDATA[</xsl:text>
+                <xsl:value-of select="text()" disable-output-escaping="yes"/>
+                <xsl:text disable-output-escaping="yes">]]&gt;</xsl:text>
+            </xsl:if>
+            
         </xsl:element>
     </xsl:template>
     
