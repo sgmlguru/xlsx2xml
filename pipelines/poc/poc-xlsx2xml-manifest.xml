@@ -22,6 +22,8 @@
         <item href="EXC2XI_categories.xsl" description="Convert category info"/>
         <item href="EXC2XI_exc-locations.xsl" description="Convert locations info from exc to target"/>
         <item href="EXC2XI_exc-events.xsl" description="Generate events"/>
+        <item href="EXC2XI_exc-duration.xsl" description="Generate duration info"/>
+        
         
     </group>
     
