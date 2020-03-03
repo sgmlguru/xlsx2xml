@@ -29,7 +29,7 @@
     <xsl:template match="sml:workbook" mode="XLSX-UTIL_NORMALISATION">
         <xsl:copy copy-namespaces="no">
             <xsl:copy-of select="@*"/>
-            <xsl:attribute name="provider" select="tokenize(base-uri(/*),'/')[last()]"/>
+            <xsl:attribute name="provider" select="substring-before(tokenize(base-uri(/*),'/')[last()],'.xml')"/>
             <xsl:apply-templates select="node()" mode="XLSX-UTIL_NORMALISATION"/>
         </xsl:copy>
     </xsl:template>
@@ -42,6 +42,17 @@
             <xsl:copy-of select="@*"/>
             <xsl:element name="v" namespace="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
                 <xsl:copy-of select="$sst//sml:si[position() = $string-no]/sml:t/text()" copy-namespaces="no"/>
+            </xsl:element>
+        </xsl:copy>
+    </xsl:template>
+    
+    
+    <!-- Inline string -->
+    <xsl:template match="sml:c[@t='inlineStr']" mode="XLSX-UTIL_NORMALISATION">
+        <xsl:copy copy-namespaces="no">
+            <xsl:copy-of select="@*"/>
+            <xsl:element name="v" namespace="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+                <xsl:value-of select=".//sml:t/text()"/>
             </xsl:element>
         </xsl:copy>
     </xsl:template>
