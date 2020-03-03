@@ -22,15 +22,6 @@
     <xsl:template match="providermap" mode="EXC2XI_XI-CLEANUP"/>
     
     
-    <!--  -->
-    <xsl:template match="fc:field" mode="EXC2XI_XI-CLEANUP">
-        <xsl:copy copy-namespaces="no">
-            <xsl:copy-of select="@*"/>
-            <xsl:value-of select="text()" disable-output-escaping="yes"/>
-        </xsl:copy>
-    </xsl:template>
-    
-    
     <!-- ID transform -->
     <xsl:template match="node()" mode="EXC2XI_XI-CLEANUP">
         <xsl:copy copy-namespaces="no">

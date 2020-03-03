@@ -37,9 +37,7 @@
             <xsl:attribute name="name" select="if (@source = 'pagebody') then ('description') else (@source)"/>
             
             <xsl:if test="normalize-space(text()) != ''">
-                <xsl:text disable-output-escaping="yes">&lt;![CDATA[</xsl:text>
-                <xsl:value-of select="text()" disable-output-escaping="yes"/>
-                <xsl:text disable-output-escaping="yes">]]&gt;</xsl:text>
+                <xsl:value-of select="text()"/>
             </xsl:if>
             
         </xsl:element>
