@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <providers xmlns="http://www.sgmlguru/ns/xproc/steps">
 
-    <provider id="">
-        <item coord="" source="" target=""/>
+    <provider id="TEMPLATE">
+        <item coord="Excel spreadsheet coordinate, i.e. A1" source="Excel column name" target="Exchange target element"/>
     </provider>
 
     <!-- Activate Learning -->
@@ -43,25 +43,25 @@
     
     
     <provider xmlns="http://www.sgmlguru/ns/xproc/steps" id="Morley_College">
-        <item coord="A" source="Education Title" target="">Education Title</item>
-        <item coord="B" source="Education Type" target="">Education Type</item>
-        <item coord="C" source="Link" target="">Link</item>
-        <item coord="D" source="Duration" target="">Duration</item>
-        <item coord="E" source="Duration Unit" target="">Duration Unit</item>
-        <item coord="F" source="School" target="">School</item>
-        <item coord="G" source="Programme Area" target="">Programme Area</item>
-        <item coord="H" source="Subject" target="">Subject</item>
-        <item coord="I" source="Email Receivers" target="">Email Receivers</item>
-        <item coord="J" source="Degree" target="">Degree</item>
-        <item coord="K" source="Description" target="">Description</item>
-        <item coord="L" source="Class Format and Activities" target="">Class Format and Activities</item>
-        <item coord="M" source="Qualification" target="">Qualification</item>
-        <item coord="N" source="Location" target="">Location</item>
-        <item coord="O" source="Full Fee" target="">Full Fee</item>
-        <item coord="P" source="Conc Fee" target="">Conc Fee</item>
-        <item coord="Q" source="Snr Fee" target="">Snr Fee</item>
-        <item coord="R" source="Currency" target="">Currency</item>
-        <item coord="S" source="Start Date" target="">Start Date</item>
+        <item coord="A" source="Education Title" target="course-name">Education Title</item>
+        <item coord="B" source="Education Type" target="course-field">Education Type</item><!-- FIXME -->
+        <item coord="C" source="Link" target="course-link">Link</item>
+        <item coord="D" source="Duration" target="duration-time">Duration</item><!-- FIXME -->
+        <item coord="E" source="Duration Unit" target="duration-unit">Duration Unit</item><!-- FIXME -->
+        <item coord="F" source="School" target="location-description">School</item>
+        <item coord="G" source="Programme Area" target="categories-category1">Programme Area</item>
+        <item coord="H" source="Subject" target="categories-category2">Subject</item>
+        <item coord="I" source="Email Receivers" target="email-receiver">Email Receivers</item><!-- FIXME -->
+        <item coord="J" source="Degree" target="course-field">Degree</item><!-- FIXME -->
+        <item coord="K" source="Description" target="course-description">Description</item>
+        <item coord="L" source="Class Format and Activities" target="course-field">Class Format and Activities</item>
+        <item coord="M" source="Qualification" target="qualification-type">Qualification</item><!-- FIXME -->
+        <item coord="N" source="Location" target="location-place">Location</item>
+        <item coord="O" source="Full Fee" target="event-price">Full Fee</item><!-- FIXME -->
+        <item coord="P" source="Conc Fee" target="event-price">Conc Fee</item><!-- FIXME -->
+        <item coord="Q" source="Snr Fee" target="event-price">Snr Fee</item><!-- FIXME -->
+        <item coord="R" source="Currency" target="event-currency">Currency</item><!-- FIXME -->
+        <item coord="S" source="Start Date" target="duration-start">Start Date</item><!-- FIXME -->
     </provider>
 
 </providers>
