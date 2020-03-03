@@ -26,6 +26,7 @@
     </group>
     
     <group description="Cleanup steps" xml:base="../../xslt/exc2xi/">
+        <item href="EXC2XI_xi-dedupe.xsl" description="Dedupe courses with the same ID. Keep events from all course instances."/>
         <item href="EXC2XI_xi-cleanup.xsl" description="Cleanup step"/>
     </group>
     
