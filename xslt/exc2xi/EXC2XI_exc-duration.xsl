@@ -30,6 +30,25 @@
         <xsl:variable name="name" select="local-name(.)"/>
         <xsl:variable name="unit" select="substring-after($name,'-')"/>
         <xsl:variable name="value" select="xs:decimal(number(text()))" as="xs:decimal"/>
+        
+        <xsl:element name="duration" namespace="http://educations.com/XmlImport">
+            
+            <xsl:if test="parent::*/sg:event-pace != ''">
+                <xsl:attribute name="text" select="parent::*/sg:event-pace/text()"/>
+            </xsl:if>
+            
+            <xsl:element name="specific" namespace="http://educations.com/XmlImport">
+                <xsl:attribute name="unit" select="$unit"/>
+                <xsl:attribute name="value" select="$value"/>
+            </xsl:element>
+        </xsl:element>
+    </xsl:template>
+    
+    
+    <xsl:template match="(sg:duration-time)[. != '']" mode="EXC2XI_EXC-DURATION">
+        <xsl:variable name="value" select="xs:decimal(text())" as="xs:decimal"/>
+        <xsl:variable name="unit" select="following-sibling::sg:duration-unit/text()"/>
+        
         <xsl:element name="duration" namespace="http://educations.com/XmlImport">
             
             <xsl:if test="parent::*/sg:event-pace != ''">
@@ -46,6 +65,10 @@
     
     <!-- Remove if value is 0 -->
     <xsl:template match="(sg:duration-years | sg:duration-weeks | sg:duration-days)[.=0]" mode="EXC2XI_EXC-DURATION"/>
+    
+    
+    <!-- Remove -->
+    <xsl:template match="sg:duration-unit" mode="EXC2XI_EXC-DURATION"/>
     
     
     <!-- Remove event pace -->
