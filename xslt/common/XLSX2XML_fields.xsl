@@ -27,7 +27,7 @@
     <xsl:template match="fc:course" mode="XLSX2XML_FIELDS">
         <xsl:variable name="fields">
             <fields>
-                <xsl:apply-templates select="preceding-sibling::sg:provider/sg:item[matches(@target,'^(course-field|course-description|provider-field|course-uniqueIdentifier|categories-categoryMIS|categories-category1|categories-category2|course-name|duration-days|duration-weeks|duration-years|event-pace|event-price|course-link|qualification-type)$')]" mode="XLSX2XML_FIELDS"/>
+                <xsl:apply-templates select="preceding-sibling::sg:provider/sg:item[matches(@target,'^(course-field|course-description|provider-field|course-uniqueIdentifier|categories-categoryMIS|categories-category1|categories-category2|course-name|duration-days|duration-weeks|duration-years|event-pace|event-price|course-link|qualification-type|duration-time|duration-unit|event-currency|email-receiver)$')]" mode="XLSX2XML_FIELDS"/>
             </fields>
         </xsl:variable>
         <xsl:copy copy-namespaces="no">
