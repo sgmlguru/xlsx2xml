@@ -58,7 +58,7 @@
             
             <!-- Create a lookup from the first row with content -->
             <!--<xsl:apply-templates select="sml:row[sml:c][1]" mode="XLSX2XML_MAP"/>-->
-            <xsl:copy-of select="$lookup"></xsl:copy-of>
+            <xsl:copy-of select="$lookup"/>
             
             <!-- Rows 2 and on - copy for now -->
             <xsl:apply-templates select="node()" mode="XLSX2XML_STRUCTURE"/>
