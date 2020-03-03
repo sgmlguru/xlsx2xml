@@ -38,6 +38,8 @@
                 
                 <xsl:for-each select="(sg:event-price)[matches(text(),'^free$','i') or number(text())]">
                     <xsl:variable name="current" select="."/>
+                    <xsl:variable name="currency" select="following-sibling::sg:event-currency/text()"/>
+                    
                     <xsl:element name="event" namespace="http://educations.com/XmlImport">
                         <xsl:attribute
                             name="uniqueIdentifier"
@@ -56,9 +58,12 @@
                             <xsl:value-of select="@source"/>
                         </xsl:processing-instruction>
                         
-                        <!-- FIXME: Currently no way to determine currency or VAT details -->
+                        <!-- FIXME: Currently no way to determine currency or VAT details for Activate_Learning -->
                         <xsl:element name="price" namespace="http://educations.com/XmlImport">
                             <xsl:attribute name="price" select="if ($current='free') then (0) else (number($current))"/>
+                            <xsl:if test="$currency != ''">
+                                <xsl:attribute name="currency" select="$currency"/>
+                            </xsl:if>
                         </xsl:element>
                         
                         <!-- FIXME: Needs proper logic -->
