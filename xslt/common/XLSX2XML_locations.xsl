@@ -30,7 +30,7 @@
         <xsl:variable name="location-fields">
             <fields>
                 <xsl:apply-templates
-                    select="providermap/item[matches(@target,'^(location-place)$')] | providermap/item[matches(@target,'^(location-description)$')]"
+                    select="sg:provider/sg:item[matches(@target,'^(location-place)$')] | sg:provider/sg:item[matches(@target,'^(location-description)$')]"
                     mode="XLSX2XML_LOCATIONS"/>
             </fields>
         </xsl:variable>
@@ -70,7 +70,7 @@
         
         <!-- Courses with the location info converted to temp elements in sg namespace -->
         <xsl:copy copy-namespaces="no">
-            <xsl:copy-of select="providermap"/>
+            <xsl:copy-of select="sg:provider"/>
             
             <xsl:apply-templates select="fc:course" mode="XLSX2XML_LOCATIONS">
                 <xsl:with-param name="location-fields" select="$location-fields"/>

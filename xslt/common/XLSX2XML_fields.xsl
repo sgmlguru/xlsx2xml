@@ -27,11 +27,11 @@
     <xsl:template match="fc:course" mode="XLSX2XML_FIELDS">
         <xsl:variable name="fields">
             <fields>
-                <xsl:apply-templates select="preceding-sibling::providermap/item[matches(@target,'^(course-field|course-description|provider-field|course-uniqueIdentifier|categories-categoryMIS|categories-category1|categories-category2|course-name|duration-days|duration-weeks|duration-years|event-pace|event-price|course-link|qualification-type)$')]" mode="XLSX2XML_FIELDS"/>
+                <xsl:apply-templates select="preceding-sibling::sg:provider/sg:item[matches(@target,'^(course-field|course-description|provider-field|course-uniqueIdentifier|categories-categoryMIS|categories-category1|categories-category2|course-name|duration-days|duration-weeks|duration-years|event-pace|event-price|course-link|qualification-type)$')]" mode="XLSX2XML_FIELDS"/>
             </fields>
         </xsl:variable>
         <xsl:copy copy-namespaces="no">
-            <xsl:copy-of select="providermap"/>
+            <xsl:copy-of select="sg:provider"/>
             <xsl:apply-templates select="*" mode="XLSX2XML_FIELDS">
                 <xsl:with-param name="fields" select="$fields"/>
             </xsl:apply-templates>
@@ -48,7 +48,7 @@
         
         <!-- Get position of a matched lookup item - this corresponds to a start or end date -->
         <xsl:variable name="match-position">
-            <xsl:for-each select="$fields//item">
+            <xsl:for-each select="$fields//sg:item">
                 <xsl:variable name="coord" select="@coord"/>
                 <xsl:variable name="target" select="@target"/>
                 <xsl:choose>
@@ -64,13 +64,13 @@
             <xsl:when test="$match-position != ''">
                 <xsl:variable
                     name="name"
-                    select="if ($fields//item[position() = number($match-position)]/@target != '')
-                            then ($fields//item[position() = number($match-position)]/@target)
+                    select="if ($fields//sg:item[position() = number($match-position)]/@target != '')
+                            then ($fields//sg:item[position() = number($match-position)]/@target)
                             else ('unknown')"/>
                 
                 <xsl:element name="{$name}" namespace="http://www.sgmlguru/ns/xproc/steps">
                     <xsl:copy-of select="@*"/>
-                    <xsl:attribute name="source" select="$fields//item[position() = number($match-position)]/@source"/>
+                    <xsl:attribute name="source" select="$fields//sg:item[position() = number($match-position)]/@source"/>
                     <xsl:value-of select="$value"/>
                 </xsl:element>
             </xsl:when>

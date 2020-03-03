@@ -9,6 +9,7 @@
     xmlns:xr2="http://schemas.microsoft.com/office/spreadsheetml/2015/revision2"
     xmlns:sml="http://schemas.openxmlformats.org/spreadsheetml/2006/main"
     xmlns:fc="http://educations.com/XmlImport"
+    xmlns:sg="http://www.sgmlguru/ns/xproc/steps"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="xs"
@@ -17,7 +18,11 @@
     <!-- This does the top structures for the output -->
     
     <!-- Generate mapping of cordinates -->
-    <xsl:import href="XLSX2XML_map.xsl"/>
+    <!--<xsl:import href="XLSX2XML_map.xsl"/>-->
+    
+    <xsl:variable name="providers" select="doc('../../mapping/providers.xml')/*"/>
+    <xsl:variable name="current-provider" select="/*/@provider"/>
+    <xsl:variable name="lookup" select="$providers//sg:provider[@id=$current-provider]"/>
     
     <xsl:output method="xml" indent="yes"/>
     
@@ -51,8 +56,9 @@
     <xsl:template match="sml:sheetData" mode="XLSX2XML_STRUCTURE">
         <xsl:element name="courses" namespace="http://educations.com/XmlImport">
             
-            <!-- Create a lookup -->
-            <xsl:apply-templates select="sml:row[1]" mode="XLSX2XML_MAP"/>
+            <!-- Create a lookup from the first row with content -->
+            <!--<xsl:apply-templates select="sml:row[sml:c][1]" mode="XLSX2XML_MAP"/>-->
+            <xsl:copy-of select="$lookup"></xsl:copy-of>
             
             <!-- Rows 2 and on - copy for now -->
             <xsl:apply-templates select="node()" mode="XLSX2XML_STRUCTURE"/>
@@ -61,7 +67,7 @@
     
     
     <!-- Delete first row since that's now a lookup -->
-    <xsl:template match="sml:row[1]" mode="XLSX2XML_STRUCTURE"/>
+    <xsl:template match="sml:row[sml:c][1]|sml:row[not(node())]" mode="XLSX2XML_STRUCTURE"/>
     
     
     <!-- ID transform -->

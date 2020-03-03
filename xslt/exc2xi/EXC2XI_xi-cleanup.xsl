@@ -19,7 +19,7 @@
     
     
     <!-- Remove the lookup -->
-    <xsl:template match="providermap" mode="EXC2XI_XI-CLEANUP"/>
+    <xsl:template match="sg:provider" mode="EXC2XI_XI-CLEANUP"/>
     
     
     <!-- ID transform -->

@@ -28,11 +28,11 @@
     <xsl:template match="fc:course" mode="XLSX2XML_DATES">
         <xsl:variable name="date-fields">
             <fields>
-                <xsl:apply-templates select="preceding-sibling::providermap/item[matches(@target,'^(duration-start)$')] | preceding-sibling::providermap/item[matches(@target,'^(duration-end)$')]" mode="XLSX2XML_DATES"/>
+                <xsl:apply-templates select="preceding-sibling::sg:provider/sg:item[matches(@target,'^(duration-start)$')] | preceding-sibling::sg:provider/sg:item[matches(@target,'^(duration-end)$')]" mode="XLSX2XML_DATES"/>
             </fields>
         </xsl:variable>
         <xsl:copy copy-namespaces="no">
-            <xsl:copy-of select="providermap"/>
+            <xsl:copy-of select="sg:provider"/>
             <xsl:apply-templates select="sml:c" mode="XLSX2XML_DATES">
                 <xsl:with-param name="date-fields" select="$date-fields"/>
             </xsl:apply-templates>
@@ -42,14 +42,14 @@
     
     <xsl:template match="sml:c" mode="XLSX2XML_DATES">
         <xsl:param name="date-fields"/>
-        <xsl:variable name="match-strings" select="$date-fields//item/@coord" as="item()*"/>
+        <xsl:variable name="match-strings" select="$date-fields//sg:item/@coord" as="item()*"/>
         <xsl:variable name="value" select="sml:v/text()"/>
         <xsl:variable name="r" select="@r" as="xs:string"/>
         <xsl:variable name="c" select="." as="item()"/>
             
         <!-- Get position of a matched lookup item - this corresponds to a start or end date -->
         <xsl:variable name="match-position">
-            <xsl:for-each select="$date-fields//item">
+            <xsl:for-each select="$date-fields//sg:item">
                 <xsl:variable name="coord" select="@coord"/>
                 <xsl:variable name="target" select="@target"/>
                 <xsl:choose>
@@ -63,7 +63,7 @@
         <!-- Convert to @target-named element if there is a match, otherwise keep the <c> -->
         <xsl:choose>
             <xsl:when test="$match-position != ''">
-                <xsl:element name="{$date-fields//item[position() = number($match-position)]/@target}" namespace="http://www.sgmlguru/ns/xproc/steps">
+                <xsl:element name="{$date-fields//sg:item[position() = number($match-position)]/@target}" namespace="http://www.sgmlguru/ns/xproc/steps">
                     <xsl:copy-of select="@*"/>
                     <xsl:value-of select="sg:todate($value)"/>
                 </xsl:element>
