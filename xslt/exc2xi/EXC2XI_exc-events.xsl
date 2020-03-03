@@ -36,12 +36,12 @@
             <xsl:element name="events" namespace="http://educations.com/XmlImport">
                 <xsl:variable name="location-id" select="$locations//fc:location[fc:place=$place and fc:description=$description]/@uniqueIdentifier"/>
                 
-                <xsl:for-each select="sg:event-price[matches(text(),'^free$','i') or number(text())]">
+                <xsl:for-each select="(sg:event-price)[matches(text(),'^free$','i') or number(text())]">
                     <xsl:variable name="current" select="."/>
                     <xsl:element name="event" namespace="http://educations.com/XmlImport">
                         <xsl:attribute
                             name="uniqueIdentifier"
-                            select="concat($id,'-',count(preceding-sibling::sg:event-price[matches(text(),'^free$','i') or number(text())]) + 1)"/>
+                            select="concat($id,'-',count((preceding-sibling::sg:event-price)[matches(text(),'^free$','i') or number(text())]) + 1)"/>
                         
                         <!-- FIXME: Need logic to determine xsi:type properly -->
                         <xsl:if test="$location-id != ''">
@@ -66,7 +66,7 @@
                             <xsl:if test="$start-date != ''">
                                 <xsl:attribute name="xsi:type" select="'Fixed'"/>
                                 <xsl:attribute name="startDate" select="$start-date"/>
-                                <xsl:if test="$start-date != $end-date">
+                                <xsl:if test="$end-date !='' and $start-date != $end-date">
                                     <xsl:attribute name="endDate" select="$end-date"/>
                                 </xsl:if>
                             </xsl:if>
