@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<provider xmlns="http://www.sgmlguru/ns/xproc/steps" id="Morley_College">
+   <item coord="A" source="Education Title" target="">Education Title</item>
+   <item coord="B" source="Education Type" target="">Education Type</item>
+   <item coord="C" source="Link" target="">Link</item>
+   <item coord="D" source="Duration" target="">Duration</item>
+   <item coord="E" source="Duration Unit" target="">Duration Unit</item>
+   <item coord="F" source="School" target="">School</item>
+   <item coord="G" source="Programme Area" target="">Programme Area</item>
+   <item coord="H" source="Subject" target="">Subject</item>
+   <item coord="I" source="Email Receivers" target="">Email Receivers</item>
+   <item coord="J" source="Degree" target="">Degree</item>
+   <item coord="K" source="Description" target="">Description</item>
+   <item coord="L" source="Class Format and Activities" target="">Class Format and Activities</item>
+   <item coord="M" source="Qualification" target="">Qualification</item>
+   <item coord="N" source="Location" target="">Location</item>
+   <item coord="O" source="Full Fee" target="">Full Fee</item>
+   <item coord="P" source="Conc Fee" target="">Conc Fee</item>
+   <item coord="Q" source="Snr Fee" target="">Snr Fee</item>
+   <item coord="R" source="Currency" target="">Currency</item>
+   <item coord="S" source="Start Date" target="">Start Date</item>
+</provider>
