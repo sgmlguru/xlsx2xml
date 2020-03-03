@@ -130,7 +130,7 @@
         
         <!-- Get position of a matched lookup item in the variable so we can use the item for conversion -->
         <xsl:variable name="match-position">
-            <xsl:for-each select="$location-fields//item">
+            <xsl:for-each select="$location-fields//sg:item">
                 <xsl:variable name="coord" select="@coord"/>
                 <xsl:variable name="target" select="@target"/>
                 <xsl:choose>
@@ -145,7 +145,7 @@
         <xsl:choose>
             <!-- Matched lookup item for BOTH locations and courses -->
             <xsl:when test="$match-position != ''">
-                <xsl:element name="{$location-fields//item[position() = number($match-position)]/@target}" namespace="http://www.sgmlguru/ns/xproc/steps">
+                <xsl:element name="{$location-fields//sg:item[position() = number($match-position)]/@target}" namespace="http://www.sgmlguru/ns/xproc/steps">
                     <xsl:value-of select="$value"/>
                 </xsl:element>
             </xsl:when>
