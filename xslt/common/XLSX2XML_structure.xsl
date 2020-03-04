@@ -47,7 +47,7 @@
     
     <xsl:template match="sml:worksheet" mode="XLSX2XML_STRUCTURE">
         <xsl:element name="provider" namespace="http://educations.com/XmlImport">
-            <xsl:attribute name="uniqueIdentifier" select="substring-before(/*/@provider,'.xml')"/>
+            <xsl:attribute name="uniqueIdentifier" select="/*/@provider"/>
             <xsl:apply-templates select="node()" mode="XLSX2XML_STRUCTURE"/>
         </xsl:element>
     </xsl:template>
