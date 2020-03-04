@@ -65,7 +65,7 @@
             <xsl:when test="$match-position != ''">
                 <xsl:element name="{$date-fields//sg:item[position() = number($match-position)]/@target}" namespace="http://www.sgmlguru/ns/xproc/steps">
                     <xsl:copy-of select="@*"/>
-                    <xsl:value-of select="sg:todate($value)"/>
+                    <xsl:value-of select="if (number($value) = number($value)) then (sg:todate($value)) else ($value)"/>
                 </xsl:element>
             </xsl:when>
             <xsl:otherwise>
