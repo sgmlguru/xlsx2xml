@@ -48,8 +48,26 @@
         </xsl:comment>
         <xsl:copy copy-namespaces="no">
             <xsl:copy-of select="@*"/>
-            <xsl:copy-of select="node()" copy-namespaces="no"/>
-            <xsl:apply-templates select="following::fc:course[@uniqueIdentifier = $id]//fc:event" mode="EXC2XI_XI-DEDUPE"/>
+            <!--<xsl:copy-of select="node()" copy-namespaces="no"/>-->
+            <xsl:apply-templates select="fc:event | following::fc:course[@uniqueIdentifier = $id]//fc:event" mode="EXC2XI_XI-DEDUPE">
+                <xsl:with-param name="id" select="$id"/>
+            </xsl:apply-templates>
+        </xsl:copy>
+    </xsl:template>
+    
+    
+    <xsl:template match="fc:event" mode="EXC2XI_XI-DEDUPE">
+        <xsl:param name="id"/>
+        
+        <!-- Count preceding-sibling events, and preceding events in a course with a matching course ID -->
+        <xsl:variable name="count-events" select="count(preceding::fc:course[@uniqueIdentifier = $id]//fc:event) + count(preceding-sibling::fc:event) + 1"/>
+        
+        <xsl:copy copy-namespaces="no">
+            <xsl:copy-of select="@* except @uniqueIdentifier"/>
+            
+            <xsl:attribute name="unique-identifier" select="concat(@uniqueIdentifier,'-',$count-events)"/>
+            
+            <xsl:apply-templates select="node()" mode="EXC2XI_XI-DEDUPE"/>
         </xsl:copy>
     </xsl:template>
     
