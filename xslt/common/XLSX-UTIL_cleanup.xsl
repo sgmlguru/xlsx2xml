@@ -31,8 +31,12 @@
     <xsl:template match="sml:sheetViews | sml:sheetFormatPr | sml:cols | sml:pageMargins | sml:pageSetup | sml:calcPr" mode="XLSX-UTIL_CLEANUP"/>
     
     
-    <!-- Remove shared strings (they were normalised in the previous step) -->
+    <!-- Remove shared strings (they were normalised in a previous step) -->
     <xsl:template match="sml:sst" mode="XLSX-UTIL_CLEANUP"/>
+    
+    
+    <!-- Remove Relationships (they were normalised in a previous step) -->
+    <xsl:template match="sml:Relationships" mode="XLSX-UTIL_CLEANUP"/>
     
     
     <!-- Remove -->
