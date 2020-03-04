@@ -10,6 +10,7 @@
     xmlns:sml="http://schemas.openxmlformats.org/spreadsheetml/2006/main"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:rp="http://schemas.openxmlformats.org/package/2006/relationships"
     exclude-result-prefixes="xs"
     version="2.0">
     
@@ -36,7 +37,7 @@
     
     
     <!-- Remove Relationships (they were normalised in a previous step) -->
-    <xsl:template match="sml:Relationships" mode="XLSX-UTIL_CLEANUP"/>
+    <xsl:template match="rp:Relationships" mode="XLSX-UTIL_CLEANUP"/>
     
     
     <!-- Remove -->
