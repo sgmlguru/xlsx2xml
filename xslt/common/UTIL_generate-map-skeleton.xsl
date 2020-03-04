@@ -14,7 +14,7 @@
     exclude-result-prefixes="xs"
     version="2.0">
     
-    <!-- Extract first row n sheet to get terminology -->
+    <!-- Extract first non-empty row in sheet (assumed to be column headings) to get terminology and populate the lookup -->
     
     <xsl:import href="XLSX-UTIL_normalisation.xsl"/>
     
@@ -57,95 +57,5 @@
         </xsl:element>
     </xsl:template>
     
-    
-    <!-- FIXME: Rewrite this into config file lookup -->
-    <xsl:template name="target">
-        <xsl:param name="source"/>
-        <xsl:attribute name="target">
-            <xsl:choose>
-                <xsl:when test="$source='Course Code'">
-                    <xsl:value-of select="'course-uniqueIdentifier'"/>
-                </xsl:when>
-                <xsl:when test="$source='StartDate'">
-                    <xsl:value-of select="'duration-start'"/>
-                </xsl:when>
-                <xsl:when test="$source='EndDate'">
-                    <xsl:value-of select="'duration-end'"/>
-                </xsl:when>
-                <xsl:when test="$source='Site_Desc'">
-                    <xsl:value-of select="'location-description'"/>
-                </xsl:when>
-                <xsl:when test="$source='LocationDesc'">
-                    <xsl:value-of select="'location-place'"/>
-                </xsl:when>
-                <xsl:when test="$source='Faculty'">
-                    <xsl:value-of select="'provider-field'"/>
-                </xsl:when>
-                <xsl:when test="$source='Sector'">
-                    <xsl:value-of select="'provider-field'"/>
-                </xsl:when>
-                <xsl:when test="$source='MIS Subject category'">
-                    <xsl:value-of select="'categories-categoryMIS'"/>
-                </xsl:when>
-                <xsl:when test="$source='Findcourses category 1'">
-                    <xsl:value-of select="'categories-category1'"/>
-                </xsl:when>
-                <xsl:when test="$source='Findcourses category 2'">
-                    <xsl:value-of select="'categories-category2'"/>
-                </xsl:when>
-                <xsl:when test="$source='WebsiteCourseTitle'">
-                    <xsl:value-of select="'course-name'"/>
-                </xsl:when>
-                <xsl:when test="$source='Length_Days'">
-                    <xsl:value-of select="'duration-days'"/>
-                </xsl:when>
-                <xsl:when test="$source='Length_Weeks'">
-                    <xsl:value-of select="'duration-weeks'"/>
-                </xsl:when>
-                <xsl:when test="$source='Length_Years'">
-                    <xsl:value-of select="'duration-years'"/>
-                </xsl:when>
-                <xsl:when test="$source='Times'">
-                    <xsl:value-of select="'course-field'"/>
-                </xsl:when>
-                <xsl:when test="$source='Mode'">
-                    <xsl:value-of select="'event-pace'"/>
-                </xsl:when>
-                <xsl:when test="$source='16free8'">
-                    <xsl:value-of select="'event-price'"/>
-                </xsl:when>
-                <xsl:when test="$source='Adult'">
-                    <xsl:value-of select="'event-price'"/>
-                </xsl:when>
-                <xsl:when test="$source='Web address to the course'">
-                    <xsl:value-of select="'course-link'"/>
-                </xsl:when>
-                <xsl:when test="$source='QualificationType'">
-                    <xsl:value-of select="'qualification-type'"/>
-                </xsl:when>
-                <xsl:when test="$source='PageSummary'">
-                    <xsl:value-of select="'course-field'"/>
-                </xsl:when>
-                <xsl:when test="$source='pagebody'">
-                    <xsl:value-of select="'course-description'"/>
-                </xsl:when>
-                <xsl:when test="$source='WhatIllLearn'">
-                    <xsl:value-of select="'course-field'"/>
-                </xsl:when>
-                <xsl:when test="$source='HowIllLearn'">
-                    <xsl:value-of select="'course-field'"/>
-                </xsl:when>
-                <xsl:when test="$source='HowIllBeAssessed'">
-                    <xsl:value-of select="'course-field'"/>
-                </xsl:when>
-                <xsl:when test="$source='EntryRequirements'">
-                    <xsl:value-of select="'course-field'"/>
-                </xsl:when>
-                <xsl:when test="$source='HowToApply'">
-                    <xsl:value-of select="'course-field'"/>
-                </xsl:when>
-            </xsl:choose>
-        </xsl:attribute>
-    </xsl:template>
     
 </xsl:stylesheet>
