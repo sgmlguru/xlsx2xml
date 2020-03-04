@@ -54,9 +54,16 @@
                         <!-- FIXME: Need logic to determine delivery method (open class, online, etc) -->
                         <xsl:attribute name="deliveryMethod" select="'Open class'"/>
                         
-                        <xsl:processing-instruction name="source">
+                        <!--<xsl:processing-instruction name="source">
                             <xsl:value-of select="@source"/>
-                        </xsl:processing-instruction>
+                        </xsl:processing-instruction>-->
+                        
+                        <xsl:element name="additionalInfo" namespace="http://educations.com/XmlImport">
+                            <xsl:element name="item" namespace="http://educations.com/XmlImport">
+                                <xsl:attribute name="key" select="'price'"/>
+                                <xsl:value-of select="@source"/>
+                            </xsl:element>
+                        </xsl:element>
                         
                         <!-- FIXME: Currently no way to determine currency or VAT details for Activate_Learning -->
                         <xsl:element name="price" namespace="http://educations.com/XmlImport">
