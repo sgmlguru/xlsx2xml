@@ -4,6 +4,7 @@
     
     <group description="XLSX normalisation and cleanup steps" xml:base="../../xslt/common/">
         <item href="XLSX-UTIL_normalisation.xsl" description="Include shared strings inline"/>
+        <item href="XLSX-UTIL_hyperlinks.xsl" description="Normalise hyperlinks"/>
         <item href="XLSX-UTIL_cleanup.xsl" description="Remove unneeded XLSX elements"/>
     </group>
     
