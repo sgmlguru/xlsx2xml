@@ -2,20 +2,89 @@
 
 <!ENTITY % duration.content "duration-start | duration-end | duration-time | duration-unit | duration-days | duration-weeks | duration-years" >
 <!ENTITY % location.content "location-place | location-description" >
-<!ENTITY % pricing.content  "event-price" >
+<!ENTITY % event.content    "event-price | event-pace" >
+<!ENTITY % category.content "categories-categoryMIS | categories-category1 | categories-category1" >
+
+<!ENTITY % id.att           "uniqueIdentifier CDATA #IMPLIED">
+<!ENTITY % cell.atts        "r CDATA #IMPLIED
+                             t CDATA #IMPLIED
+                             source CDATA #IMPLIED" >
 
 
 <!ELEMENT import    (provider+) >
 <!ATTLIST import    uniqueIdentifier CDATA #REQUIRED >
 
 <!ELEMENT provider  ((courses, locations) | item) >
-<!ATTLIST provider  uniqueIdentifier CDATA #IMPLIED
+<!ATTLIST provider  %id.att;
                     coord CDATA #IMPLIED
+                    source CDATA #IMPLIED
+                    target CDATA #IMPLIED >
+
+<!ELEMENT item      (#PCDATA) >
+<!ATTLIST item      coord CDATA #IMPLIED
                     source CDATA #IMPLIED
                     target CDATA #IMPLIED >
 
 <!ELEMENT courses   (course+) >
 
-<!ELEMENT course    (course-fields | uniqueIdentifier | (%duration.content;) | (%location.content;))+ >
+<!ELEMENT course    (course-field | uniqueIdentifier | course-link | qualification-type | (%duration.content;) | (%location.content;) | (%event.content;) | (%category.content;))+ >
 <!ATTLIST course    uniqueIdentifier CDATA #REQUIRED >
 
+<!ELEMENT course-field  (#PCDATA) >
+<!ATTLIST course-field  %cell.atts; >
+
+<!ELEMENT locations (location+) >
+
+<!ELEMENT location  (%location.content;)+ >
+<!ATTLIST location  %id.att; >
+
+<!ELEMENT uniqueIdentifier  (#PCDATA) >
+<!ATTLIST uniqueIdentifier  %cell.atts; >
+
+<!ELEMENT course-link  (#PCDATA) >
+<!ATTLIST course-link  %cell.atts; >
+
+<!ELEMENT qualification-type  (#PCDATA) >
+<!ATTLIST qualification-type  %cell.atts; >
+
+<!ELEMENT duration-start      (#PCDATA) >
+<!ATTLIST duration-start      %cell.atts; >
+
+<!ELEMENT duration-end      (#PCDATA) >
+<!ATTLIST duration-end      %cell.atts; >
+
+<!ELEMENT duration-days      (#PCDATA) >
+<!ATTLIST duration-days      %cell.atts; >
+
+<!ELEMENT duration-weeks      (#PCDATA) >
+<!ATTLIST duration-weeks      %cell.atts; >
+
+<!ELEMENT duration-years      (#PCDATA) >
+<!ATTLIST duration-years      %cell.atts; >
+
+<!ELEMENT duration-time      (#PCDATA) >
+<!ATTLIST duration-time      %cell.atts; >
+
+<!ELEMENT duration-unit      (#PCDATA) >
+<!ATTLIST duration-unit      %cell.atts; >
+
+<!ELEMENT event-pace      (#PCDATA) >
+<!ATTLIST event-pace      %cell.atts; >
+
+<!ELEMENT event-price      (#PCDATA) >
+<!ATTLIST event-price      %cell.atts; >
+
+<!ELEMENT location-place      (#PCDATA) >
+<!ATTLIST location-place      %cell.atts; >
+
+<!ELEMENT location-description      (#PCDATA) >
+<!ATTLIST location-description      %cell.atts; >
+
+<!ELEMENT categories-categoryMIS    (#PCDATA) >
+<!ATTLIST categories-categoryMIS    %id.att; >
+
+<!ELEMENT categories-category1    (#PCDATA) >
+<!ATTLIST categories-category1    %id.att; >
+
+<!ELEMENT categories-category2    (#PCDATA) >
+<!ATTLIST categories-category2    %id.att; >
