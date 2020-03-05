@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ENTITY % duration.content "duration-start | duration-end | duration-time | duration-unit | duration-days | duration-weeks | duration-years" >
+<!ENTITY % location.content "location-place | location-description" >
+<!ENTITY % pricing.content  "event-price" >
+
+
+<!ELEMENT import    (provider+) >
+<!ATTLIST import    uniqueIdentifier CDATA #REQUIRED >
+
+<!ELEMENT provider  ((courses, locations) | item) >
+<!ATTLIST provider  uniqueIdentifier CDATA #IMPLIED
+                    coord CDATA #IMPLIED
+                    source CDATA #IMPLIED
+                    target CDATA #IMPLIED >
+
+<!ELEMENT courses   (course+) >
+
+<!ELEMENT course    (course-fields | uniqueIdentifier | (%duration.content;) | (%location.content;))+ >
+<!ATTLIST course    uniqueIdentifier CDATA #REQUIRED >
+
