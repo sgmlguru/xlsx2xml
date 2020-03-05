@@ -31,7 +31,7 @@
         <xsl:variable name="hyperlinks" select="sml:hyperlinks"/>
         <xsl:choose>
             <xsl:when test="sml:hyperlinks">
-                <xsl:copy copy-namespaces="no">
+                <xsl:copy>
                     <xsl:copy-of select="@*"/>
                     <xsl:apply-templates select="node()" mode="XLSX-UTIL_HYPERLINKS">
                         <xsl:with-param name="hyperlinks" select="$hyperlinks" tunnel="yes"/>
@@ -54,7 +54,7 @@
         
         <xsl:choose>
             <xsl:when test="$link != ''">
-                <xsl:copy copy-namespaces="no">
+                <xsl:copy>
                     <xsl:copy-of select="@*"/>
                     <xsl:element name="v" namespace="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
                         <xsl:value-of select="$link"/>
@@ -70,7 +70,7 @@
     
     <!-- ID transform -->
     <xsl:template match="node()" mode="XLSX-UTIL_HYPERLINKS">
-        <xsl:copy copy-namespaces="no">
+        <xsl:copy>
             <xsl:copy-of select="@*"/>
             <xsl:apply-templates select="node()" mode="XLSX-UTIL_HYPERLINKS"/>
         </xsl:copy>

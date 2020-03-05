@@ -29,7 +29,7 @@
     
     
     <!-- Remove worksheet elements -->
-    <xsl:template match="sml:sheetViews | sml:sheetFormatPr | sml:cols | sml:pageMargins | sml:pageSetup | sml:calcPr" mode="XLSX-UTIL_CLEANUP"/>
+    <xsl:template match="sml:sheetViews | sml:sheetFormatPr | sml:cols | sml:pageMargins | sml:pageSetup | sml:calcPr | sml:sheetPr" mode="XLSX-UTIL_CLEANUP"/>
     
     
     <!-- Remove shared strings (they were normalised in a previous step) -->
@@ -38,6 +38,10 @@
     
     <!-- Remove Relationships (they were normalised in a previous step) -->
     <xsl:template match="rp:Relationships" mode="XLSX-UTIL_CLEANUP"/>
+    
+    
+    <!-- Remove hyperlinks -->
+    <xsl:template match="sml:hyperlinks" mode="XLSX-UTIL_CLEANUP"/>
     
     
     <!-- Remove -->
@@ -62,7 +66,7 @@
     
     <!-- ID transform -->
     <xsl:template match="node()" mode="XLSX-UTIL_CLEANUP">
-        <xsl:copy copy-namespaces="no">
+        <xsl:copy>
             <xsl:copy-of select="@*"/>
             <xsl:apply-templates select="node()" mode="XLSX-UTIL_CLEANUP"/>
         </xsl:copy>

@@ -27,7 +27,7 @@
     
     
     <xsl:template match="sml:workbook" mode="XLSX-UTIL_NORMALISATION">
-        <xsl:copy copy-namespaces="no">
+        <xsl:copy>
             <xsl:copy-of select="@*"/>
             <xsl:attribute name="provider" select="substring-before(tokenize(base-uri(/*),'/')[last()],'.xml')"/>
             <xsl:apply-templates select="node()" mode="XLSX-UTIL_NORMALISATION"/>
@@ -38,7 +38,7 @@
     <!-- Look up shared strings -->
     <xsl:template match="sml:c[@t='s']" mode="XLSX-UTIL_NORMALISATION">
         <xsl:variable name="string-no" select="number(sml:v/text()) + 1"/>
-        <xsl:copy copy-namespaces="no">
+        <xsl:copy>
             <xsl:copy-of select="@*"/>
             <xsl:element name="v" namespace="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
                 <xsl:copy-of select="$sst//sml:si[position() = $string-no]/sml:t/text()" copy-namespaces="no"/>
@@ -49,7 +49,7 @@
     
     <!-- Inline string -->
     <xsl:template match="sml:c[@t='inlineStr']" mode="XLSX-UTIL_NORMALISATION">
-        <xsl:copy copy-namespaces="no">
+        <xsl:copy>
             <xsl:copy-of select="@*"/>
             <xsl:element name="v" namespace="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
                 <xsl:value-of select=".//sml:t/text()"/>
@@ -60,7 +60,7 @@
     
     <!-- ID transform -->
     <xsl:template match="node()" mode="XLSX-UTIL_NORMALISATION">
-        <xsl:copy copy-namespaces="no">
+        <xsl:copy>
             <xsl:copy-of select="@*"/>
             <xsl:apply-templates select="node()" mode="XLSX-UTIL_NORMALISATION"/>
         </xsl:copy>

@@ -29,7 +29,7 @@
     
     <!-- ID transform -->
     <xsl:template match="node()" mode="XLSX-UTIL_REMOVE-EMPTY">
-        <xsl:copy copy-namespaces="no">
+        <xsl:copy>
             <xsl:copy-of select="@*"/>
             <xsl:apply-templates select="node()" mode="XLSX-UTIL_REMOVE-EMPTY"/>
         </xsl:copy>
