@@ -76,7 +76,7 @@ This lists suggested columns in the spreadsheet.
 * Event_Price_Type (full, adult, discount, etc)
 * ... (repeat the three pricing columns as needed)
 
-Any other info should follow the above - they will all be mapped to content fields, so I would expect HTML tagging.
+Any additional information should follow the above in separate columns - they will all be mapped to content fields, so I would expect HTML tagging.
 
 
 ## Issues & Comments
@@ -85,7 +85,7 @@ Any other info should follow the above - they will all be mapped to content fiel
 * Should a degree resulting from the course be given in a dedicated column or a content field?
 
 
-[Ari Nordström](ari.nordstrom@gmail.com)
+[Ari Nordström](mailto:ari.nordstrom@gmail.com)
 2020-03-05
 
 

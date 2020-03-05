@@ -1,0 +1,58 @@
+<h1 id="input-requirements-for-the-excel-spreadsheet-format">Input Requirements for the Excel Spreadsheet Format</h1>
+<p>This is a little something about the desired Excel spreadsheet format I’d like to see. The closer they get to this, the better.</p>
+<h2 id="excel-version-and-features">Excel Version and Features</h2>
+<p>I’d much prefer Office 365 or 2010, if possible. 2003 will work but most likely require extra work.</p>
+<p>A single-worksheet approach is much easier to process, so they should avoid the temptation to put things in separate worksheets.</p>
+<p>Hyperlinks to courses are fine, as long as they are not embedded in content fields, say descriptions that use HTML tagging. A hyperlink should always be placed in its own cell.</p>
+<p>Content fields should use HTML tagging whenever possible. Text-only formatting in cells, with line breaks and the like, risk breaking.</p>
+<p>Care should be taken to <em>not</em> duplicate content in different columns. This tends to happen when exporting raw DB contents - probably a normalisation “feature”.</p>
+<h2 id="numbers-and-units">Numbers and Units</h2>
+<p>When providing a price, a currency unit and the registration type (full, adult, senior, etc) should also be provided.</p>
+<p>A start or end date should be given in proper Excel date format. This ensures that we can format it properly later.</p>
+<p>A duration should be given as a number accompanied by a unit (days, weeks, etc).</p>
+<p>Times should be given using Excel’s 24-hr time format, if possible. A range should be OK, i.e. 08:00 - 16:00.</p>
+<h2 id="locations">Locations</h2>
+<p>A city should be accampanied by a country.</p>
+<p>A college should be identified with at least a name but also a location, preferably with address and contact info.</p>
+<p>The course’s attendance type (location, online, etc) should be clearly given.</p>
+<h2 id="identifiers">Identifiers</h2>
+<p>The provider should be identified in a column in the spreadsheet. In my tests, I’ve had to use the filename to get some kind of identification.</p>
+<p>Every course should have a unique identifier. I’ve had to generate IDs based on the course name in some cases, which is far from ideal.</p>
+<p>If there are multiple occurrences of a single course (in differing time slots, for example), this should be stated clearly.</p>
+<h2 id="column-suggestions">Column Suggestions</h2>
+<p>This lists suggested columns in the spreadsheet.</p>
+<ul>
+<li>Provider_Name</li>
+<li>Provider_ID</li>
+<li>Provider_URL (optional)</li>
+<li>Course_Name</li>
+<li>Course_ID</li>
+<li>Course_Multiple_Occurence (true/false - indicates if the same course is offered multiple times)</li>
+<li>Course_Description (HTML content)</li>
+<li>Course_URL</li>
+<li>Category_1</li>
+<li>Category_2 (optional)</li>
+<li>Category_3 (optional)</li>
+<li>Start_Date (date for course start)</li>
+<li>End_Date (date for course end - optional)</li>
+<li>Duration_Time (number)</li>
+<li>Duration_Unit (unit - days, weeks, etc)</li>
+<li>Duration_Mode (full-time, part-time, percentage - optional)</li>
+<li>Times (start and end times - optional)</li>
+<li>Country</li>
+<li>City</li>
+<li>College_Name</li>
+<li>Receiver_Email (optional?)</li>
+<li>Address (comma-separated address lines according to country convention - optional)</li>
+<li>Event_Price (number)</li>
+<li>Event_Currency (currency for that number)</li>
+<li>Event_Price_Type (full, adult, discount, etc)</li>
+<li>… (repeat the three pricing columns as needed)</li>
+</ul>
+<p>Any additional information should follow the above in separate columns - they will all be mapped to content fields, so I would expect HTML tagging.</p>
+<h2 id="issues-comments">Issues &amp; Comments</h2>
+<ul>
+<li>Should required qualification credentials for applying be given in a separate column or simply as a content field?</li>
+<li>Should a degree resulting from the course be given in a dedicated column or a content field?</li>
+</ul>
+<p><a href="mailto:ari.nordstrom@gmail.com">Ari Nordström</a> 2020-03-05</p>
