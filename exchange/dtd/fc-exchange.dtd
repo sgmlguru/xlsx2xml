@@ -3,7 +3,7 @@
 <!ENTITY % duration.content "duration-start | duration-end | duration-time | duration-unit | duration-days | duration-weeks | duration-years" >
 <!ENTITY % location.content "location-place | location-description" >
 <!ENTITY % event.content    "event-price | event-pace" >
-<!ENTITY % category.content "categories-categoryMIS | categories-category1 | categories-category1" >
+<!ENTITY % category.content "categories-categoryMIS | categories-category1 | categories-category2" >
 
 <!ENTITY % id.att           "uniqueIdentifier CDATA #IMPLIED">
 <!ENTITY % cell.atts        "r CDATA #IMPLIED
