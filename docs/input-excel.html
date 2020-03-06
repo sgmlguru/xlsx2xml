@@ -1,26 +1,27 @@
 <h1 id="input-requirements-for-the-excel-spreadsheet-format">Input Requirements for the Excel Spreadsheet Format</h1>
-<p>This is a little something about the desired Excel spreadsheet format I’d like to see. The closer they get to this, the better.</p>
+<p>This discusses the desired Excel spreadsheet format I’d like to see, plus some comments around the various data. In general, the closer they get to this, the better.</p>
+<p><strong>This is a work in progress. Please don’t hesitate to comment and point out issues!</strong></p>
 <h2 id="excel-version-and-features">Excel Version and Features</h2>
-<p>I’d much prefer Office 365 or 2010, if possible. 2003 will work but most likely require extra work.</p>
-<p>A single-worksheet approach is much easier to process, so they should avoid the temptation to put things in separate worksheets.</p>
-<p>Hyperlinks to courses are fine, as long as they are not embedded in content fields, say descriptions that use HTML tagging. A hyperlink should always be placed in its own cell.</p>
-<p>Content fields should use HTML tagging whenever possible. Text-only formatting in cells, with line breaks and the like, risk breaking.</p>
+<p>I’d much prefer <em>Office 365</em> or <em>2010</em>, if possible. <em>2003</em> will work but most likely require extra work.</p>
+<p><em>A single-worksheet approach</em> is much easier to process, so we should avoid the temptation to put things in separate worksheets.</p>
+<p><em>Hyperlinks to courses</em> are fine, as long as they are not embedded in content fields, say descriptions that use HTML tagging. <em>A hyperlink should always be placed in its own cell.</em></p>
+<p><em>Content fields should use HTML tagging whenever possible.</em> Text-only formatting in cells, with line breaks and the like, risk breaking.</p>
 <p>Care should be taken to <em>not</em> duplicate content in different columns. This tends to happen when exporting raw DB contents - probably a normalisation “feature”.</p>
 <h2 id="numbers-and-units">Numbers and Units</h2>
-<p>When providing a price, a currency unit and the registration type (full, adult, senior, etc) should also be provided.</p>
-<p>A start or end date should be given in proper Excel date format. This ensures that we can format it properly later.</p>
-<p>A duration should be given as a number accompanied by a unit (days, weeks, etc).</p>
-<p>Times should be given using Excel’s 24-hr time format, if possible. A range should be OK, i.e. 08:00 - 16:00.</p>
+<p>When providing a <em>price</em>, a <em>currency unit</em> and the <em>registration type</em> (full, adult, senior, etc) should also be provided.</p>
+<p><em>A start or end date should be given in proper Excel date format, that is, formatting the Excel cell as a date.</em> This ensures that we can recognise and format any dates properly later.</p>
+<p><em>A duration should be given as a number accompanied by a unit</em> (days, weeks, etc). Easiest is to give a duration time in one column and a duration unit in the next.</p>
+<p><em>Times should be given using Excel’s 24-hr time format</em>, if possible. A range should be OK, i.e. 08:00 - 16:00.</p>
 <h2 id="locations">Locations</h2>
 <p>A city should be accampanied by a country.</p>
 <p>A college should be identified with at least a name but also a location, preferably with address and contact info.</p>
 <p>The course’s attendance type (location, online, etc) should be clearly given.</p>
 <h2 id="identifiers">Identifiers</h2>
-<p>The provider should be identified in a column in the spreadsheet. In my tests, I’ve had to use the filename to get some kind of identification.</p>
-<p>Every course should have a unique identifier. I’ve had to generate IDs based on the course name in some cases, which is far from ideal.</p>
+<p>The <em>provider</em> should be identified in a column in the spreadsheet. In my tests, I’ve had to use the filename to get some kind of identification.</p>
+<p>Every <em>course</em> should have a unique identifier. I’ve had to generate IDs based on the course name in some cases, which is far from ideal.</p>
 <p>If there are multiple occurrences of a single course (in differing time slots, for example), this should be stated clearly.</p>
 <h2 id="column-suggestions">Column Suggestions</h2>
-<p>This lists suggested columns in the spreadsheet.</p>
+<p>This lists suggested columns in the spreadsheet. Each of these is mapped to the XML.</p>
 <ul>
 <li>Provider_Name</li>
 <li>Provider_ID</li>
@@ -50,9 +51,12 @@
 <li>… (repeat the three pricing columns as needed)</li>
 </ul>
 <p>Any additional information should follow the above in separate columns - they will all be mapped to content fields, so I would expect HTML tagging.</p>
+<h2 id="examples">Examples</h2>
+<p>The <em>Activate_Learning</em> spreadsheet provides durations in three separate columns, <em>Length_Days</em>, <em>Length_Weeks</em>, and <em>Length_Years</em>. The contents are always numbers, and all but one of them in any row will be 0. This works since there is no doubt about the duration time or unit.</p>
+<p>The <em>Surrey_Adult_Learning</em> spreadsheet provides durations in a single column, with string values such as “10 Week” and “1 Day”. These are a bit dodgy since we’ll have to analyse the string contents using a regular expression to find out the duration time and unit. While the values may be created by an applicationv - they most likely are since the spreadsheet appears to be a simple DB dump - there is no way to know what the allowed values are.</p>
 <h2 id="issues-comments">Issues &amp; Comments</h2>
 <ul>
-<li>Should required qualification credentials for applying be given in a separate column or simply as a content field?</li>
+<li>Should required qualification credentials for applying be given in a dedicated column for the purpose or simply as a generic content field?</li>
 <li>Should a degree resulting from the course be given in a dedicated column or a content field?</li>
 </ul>
-<p><a href="mailto:ari.nordstrom@gmail.com">Ari Nordström</a> 2020-03-05</p>
+<p><a href="mailto:ari.nordstrom@gmail.com">Ari Nordström</a> 2020-03-06</p>
