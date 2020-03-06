@@ -11,42 +11,57 @@
                              source CDATA #IMPLIED" >
 
 
+<!-- Root element -->
 <!ELEMENT import    (provider+) >
 <!ATTLIST import    uniqueIdentifier CDATA #REQUIRED
                     xmlns CDATA #FIXED "http://www.sgmlguru/ns/xproc/steps">
 
+<!-- Provide, i.e. college offering courses -->
 <!ELEMENT provider  ((courses, locations) | item) >
 <!ATTLIST provider  %id.att;
                     coord CDATA #IMPLIED
                     source CDATA #IMPLIED
                     target CDATA #IMPLIED >
 
+<!-- Excel column to exchange XML element mapping -->
 <!ELEMENT item      (#PCDATA) >
 <!ATTLIST item      coord CDATA #IMPLIED
                     source CDATA #IMPLIED
                     target CDATA #IMPLIED >
 
+<!-- Wrapper -->
 <!ELEMENT courses   (course+) >
 
-<!ELEMENT course    (course-field | uniqueIdentifier | course-link | qualification-type | (%duration.content;) | (%location.content;) | (%event.content;) | (%category.content;))+ >
+<!-- A course -->
+<!ELEMENT course    (course-field | uniqueIdentifier | course-link | qualification-type | remove | (%duration.content;) | (%location.content;) | (%event.content;) | (%category.content;))+ >
 <!ATTLIST course    uniqueIdentifier CDATA #REQUIRED >
 
+<!-- A generic course field -->
 <!ELEMENT course-field  (#PCDATA) >
 <!ATTLIST course-field  %cell.atts; >
 
+<!-- Locations wrapper -->
 <!ELEMENT locations (location+) >
 
+<!-- A single location for one or more courses -->
 <!ELEMENT location  (%location.content;)+ >
 <!ATTLIST location  %id.att; >
 
+<!-- A unique identifier string -->
 <!ELEMENT uniqueIdentifier  (#PCDATA) >
 <!ATTLIST uniqueIdentifier  %cell.atts; >
 
+<!-- URL to the course -->
 <!ELEMENT course-link  (#PCDATA) >
 <!ATTLIST course-link  %cell.atts; >
 
 <!ELEMENT qualification-type  (#PCDATA) >
 <!ATTLIST qualification-type  %cell.atts; >
+
+<!-- Column to be removed in the XML output -->
+<!ELEMENT remove    (#PCDATA) >
+<!ATTLIST remove    %cell.atts; >
+
 
 <!ELEMENT duration-start      (#PCDATA) >
 <!ATTLIST duration-start      %cell.atts; >
@@ -69,15 +84,19 @@
 <!ELEMENT duration-unit      (#PCDATA) >
 <!ATTLIST duration-unit      %cell.atts; >
 
+<!-- Pace of the course (full-time, half-time, ...) -->
 <!ELEMENT event-pace      (#PCDATA) >
 <!ATTLIST event-pace      %cell.atts; >
 
+<!-- Course fee -->
 <!ELEMENT event-price      (#PCDATA) >
 <!ATTLIST event-price      %cell.atts; >
 
+<!-- Location city -->
 <!ELEMENT location-place      (#PCDATA) >
 <!ATTLIST location-place      %cell.atts; >
 
+<!-- Location description -->
 <!ELEMENT location-description      (#PCDATA) >
 <!ATTLIST location-description      %cell.atts; >
 
