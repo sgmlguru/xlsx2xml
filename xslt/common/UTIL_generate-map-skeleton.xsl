@@ -49,12 +49,18 @@
     <xsl:template match="sml:c" mode="UTIL_GENERATE-MAP-SKELETON">
         <xsl:variable name="source" select="sml:v/text()"/>
         
-        <xsl:element name="item" namespace="http://www.sgmlguru/ns/xproc/steps">
-            <xsl:attribute name="coord" select="replace(@r,'^([A-Z]+)[0-9]+$','$1')"/>
-            <xsl:attribute name="source" select="$source"/>
-            <xsl:attribute name="target"/>
-            <xsl:value-of select="$source"/>
-        </xsl:element>
+        <xsl:choose>
+            <xsl:when test="$source != ''">
+                <xsl:element name="item" namespace="http://www.sgmlguru/ns/xproc/steps">
+                    <xsl:attribute name="coord" select="replace(@r,'^([A-Z]+)[0-9]+$','$1')"/>
+                    <xsl:attribute name="source" select="$source"/>
+                    <xsl:attribute name="target"/>
+                    <xsl:value-of select="$source"/>
+                </xsl:element>
+            </xsl:when>
+            <xsl:otherwise/>
+        </xsl:choose>
+        
     </xsl:template>
     
     
