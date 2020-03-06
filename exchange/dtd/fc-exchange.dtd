@@ -12,7 +12,8 @@
 
 
 <!ELEMENT import    (provider+) >
-<!ATTLIST import    uniqueIdentifier CDATA #REQUIRED >
+<!ATTLIST import    uniqueIdentifier CDATA #REQUIRED
+                    xmlns CDATA #FIXED "http://www.sgmlguru/ns/xproc/steps">
 
 <!ELEMENT provider  ((courses, locations) | item) >
 <!ATTLIST provider  %id.att;
