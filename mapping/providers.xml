@@ -70,33 +70,33 @@
         <item coord="B" source="YOUR_COURSE_CODE" target="course-uniqueIdentifier">YOUR_COURSE_CODE</item>
         <item coord="C" source="TITLE*" target="course-name">TITLE*</item>
         <item coord="D" source="SUMMARY*" target="course-description">SUMMARY*</item>
-        <item coord="E" source="QUALIFICATION_CODE" target="">QUALIFICATION_CODE</item>
-        <item coord="F" source="QUALIFICATION_TITLE*" target="">QUALIFICATION_TITLE*</item>
-        <item coord="G" source="AWARDING_BODY" target="">AWARDING_BODY</item>
-        <item coord="H" source="LAD_ID" target="">LAD_ID</item>
-        <item coord="I" source="ENTRY_REQUIREMENTS*" target="">ENTRY_REQUIREMENTS*</item>
-        <item coord="J" source="AVAILABLE_TO_INTERNATIONAL_STUDENTS?" target="">AVAILABLE_TO_INTERNATIONAL_STUDENTS?</item>
-        <item coord="K" source="INTERNATIONAL_ENTRY_REQUIREMENTS" target="">INTERNATIONAL_ENTRY_REQUIREMENTS</item>
-        <item coord="L" source="SPECIFIC_TARGET_GROUPS?" target="">SPECIFIC_TARGET_GROUPS?</item>
-        <item coord="M" source="LEVEL" target="">LEVEL</item>
+        <item coord="E" source="QUALIFICATION_CODE" target="">QUALIFICATION_CODE</item><!-- FIXME -->
+        <item coord="F" source="QUALIFICATION_TITLE*" target="">QUALIFICATION_TITLE*</item><!-- FIXME -->
+        <item coord="G" source="AWARDING_BODY" target="">AWARDING_BODY</item><!-- FIXME -->
+        <item coord="H" source="LAD_ID" target="">LAD_ID</item><!-- FIXME -->
+        <item coord="I" source="ENTRY_REQUIREMENTS*" target="">ENTRY_REQUIREMENTS*</item><!-- FIXME -->
+        <item coord="J" source="AVAILABLE_TO_INTERNATIONAL_STUDENTS?" target="">AVAILABLE_TO_INTERNATIONAL_STUDENTS?</item><!-- FIXME -->
+        <item coord="K" source="INTERNATIONAL_ENTRY_REQUIREMENTS" target="">INTERNATIONAL_ENTRY_REQUIREMENTS</item><!-- FIXME -->
+        <item coord="L" source="SPECIFIC_TARGET_GROUPS?" target="">SPECIFIC_TARGET_GROUPS?</item><!-- FIXME -->
+        <item coord="M" source="LEVEL" target="">LEVEL</item><!-- FIXME -->
         <item coord="N" source="COURSE_URL" target="course-link">COURSE_URL</item>
-        <item coord="O" source="COURSE_REF*" target="">COURSE_REF*</item>
-        <item coord="P" source="HC_DELIVERY_ID" target="">HC_DELIVERY_ID</item>
-        <item coord="Q" source="VENUE_REF" target="">VENUE_REF</item>
+        <item coord="O" source="COURSE_REF*" target="">COURSE_REF*</item><!-- FIXME -->
+        <item coord="P" source="HC_DELIVERY_ID" target="">HC_DELIVERY_ID</item><!-- FIXME -->
+        <item coord="Q" source="VENUE_REF" target="">VENUE_REF</item><!-- FIXME --><!-- FIXME -->
         <item coord="R" source="AREA_OF_COVERAGE" target="">AREA_OF_COVERAGE</item>
-        <item coord="S" source="DURATION*" target="">DURATION*</item>
-        <item coord="T" source="STUDY_MODE_CODE*" target="">STUDY_MODE_CODE*</item>
+        <item coord="S" source="DURATION*" target="duration-time">DURATION*</item><!-- FIXME -->
+        <item coord="T" source="STUDY_MODE_CODE*" target="">STUDY_MODE_CODE*</item><!-- FIXME -->
         <item coord="U" source="START_DATES/MONTHS" target="duration-start">START_DATES/MONTHS</item>
-        <item coord="V" source="START_DATE_DESC" target="">START_DATE_DESC</item>
-        <item coord="W" source="VIRTUAL HELP/ DAYS OF WEEK" target="">VIRTUAL HELP/ DAYS OF WEEK</item>
+        <item coord="V" source="START_DATE_DESC" target="course-field">START_DATE_DESC</item><!-- FIXME -->
+        <item coord="W" source="VIRTUAL HELP/ DAYS OF WEEK" target="course-field">VIRTUAL HELP/ DAYS OF WEEK</item><!-- FIXME -->
         <item coord="X" source="STANDARD_FEES" target="event-price">STANDARD_FEES</item>
         <item coord="Y" source="PROMOTIONAL_FEE" target="event-price">PROMOTIONAL_FEE</item>
         <item coord="Z" source="CONCESSION_FEE" target="event-price">CONCESSION_FEE</item>
-        <item coord="AA" source="FEES_DESCRIPTION" target="">FEES_DESCRIPTION</item>
-        <item coord="AB" source="PRICE_URL" target="">PRICE_URL</item>
-        <item coord="AC" source="INTERNATIONAL_FEES" target="">INTERNATIONAL_FEES</item>
-        <item coord="AD" source="INTERNATIONAL_PRICE_PER_YEAR" target="">INTERNATIONAL_PRICE_PER_YEAR</item>
-        <item coord="AE" source="INTERNATIONAL_FEE_DESCRIPTION" target="">INTERNATIONAL_FEE_DESCRIPTION</item>
+        <item coord="AA" source="FEES_DESCRIPTION" target="course-field">FEES_DESCRIPTION</item>
+        <item coord="AB" source="PRICE_URL" target="">PRICE_URL</item><!-- FIXME -->
+        <item coord="AC" source="INTERNATIONAL_FEES" target="event-price">INTERNATIONAL_FEES</item>
+        <item coord="AD" source="INTERNATIONAL_PRICE_PER_YEAR" target="event-price">INTERNATIONAL_PRICE_PER_YEAR</item>
+        <item coord="AE" source="INTERNATIONAL_FEE_DESCRIPTION" target="course-field">INTERNATIONAL_FEE_DESCRIPTION</item>
         <item coord="AF" source="URL_FOR_APPLICATION" target="">URL_FOR_APPLICATION</item>
         <item coord="AG" source="" target=""/>
         <item coord="AH" source="" target=""/>
