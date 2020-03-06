@@ -24,7 +24,7 @@ In short, this is what happens:
 
 Most of the mapping file, `mapping/providers.xml`, is *generated* using an XSLT stylesheet, `xslt/common/UTIL_generate-map-skeleton.xsl`. The output is looks like this:
 
-```
+```XML
 <provider id="provider-ID">
     <item coord="A1" source="Excel column name" target=""/>
 </provider>
