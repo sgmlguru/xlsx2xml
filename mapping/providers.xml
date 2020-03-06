@@ -80,7 +80,7 @@
         <item coord="L" source="SPECIFIC_TARGET_GROUPS?" target="">SPECIFIC_TARGET_GROUPS?</item><!-- FIXME -->
         <item coord="M" source="LEVEL" target="">LEVEL</item><!-- FIXME -->
         <item coord="N" source="COURSE_URL" target="course-link">COURSE_URL</item>
-        <item coord="O" source="COURSE_REF*" target="">COURSE_REF*</item><!-- FIXME -->
+        <item coord="O" source="COURSE_REF*" target="remove">COURSE_REF*</item><!-- FIXME -->
         <item coord="P" source="HC_DELIVERY_ID" target="">HC_DELIVERY_ID</item><!-- FIXME -->
         <item coord="Q" source="VENUE_REF" target="">VENUE_REF</item><!-- FIXME --><!-- FIXME -->
         <item coord="R" source="AREA_OF_COVERAGE" target="">AREA_OF_COVERAGE</item>
@@ -98,10 +98,6 @@
         <item coord="AD" source="INTERNATIONAL_PRICE_PER_YEAR" target="event-price">INTERNATIONAL_PRICE_PER_YEAR</item>
         <item coord="AE" source="INTERNATIONAL_FEE_DESCRIPTION" target="course-field">INTERNATIONAL_FEE_DESCRIPTION</item>
         <item coord="AF" source="URL_FOR_APPLICATION" target="">URL_FOR_APPLICATION</item>
-        <item coord="AG" source="" target=""/>
-        <item coord="AH" source="" target=""/>
-        <item coord="AI" source="" target=""/>
-        <item coord="AJ" source="" target=""/>
     </provider>
 
 </providers>
