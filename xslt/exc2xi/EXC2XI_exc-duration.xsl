@@ -46,8 +46,45 @@
     
     
     <xsl:template match="(sg:duration-time)[. != '']" mode="EXC2XI_EXC-DURATION">
-        <xsl:variable name="value" select="xs:decimal(text())" as="xs:decimal"/>
-        <xsl:variable name="unit" select="following-sibling::sg:duration-unit/text()"/>
+        
+        <xsl:variable name="raw-value" select="text()"/>
+        
+        <xsl:variable name="value">
+            <xsl:analyze-string select="$raw-value" regex="^([0-9]+)[\s]+(Week|Day)$">
+                <xsl:matching-substring>
+                    <xsl:value-of select="regex-group(1)"/>
+                </xsl:matching-substring>
+                <xsl:non-matching-substring>
+                    <xsl:value-of select="$raw-value"/>
+                </xsl:non-matching-substring>
+            </xsl:analyze-string>
+        </xsl:variable>
+        
+        <xsl:variable name="raw-unit">
+            <xsl:analyze-string select="$raw-value" regex="^([0-9]+)[\s]+(Week|Day)$">
+                <xsl:matching-substring>
+                    <xsl:value-of select="regex-group(2)"/>
+                </xsl:matching-substring>
+            </xsl:analyze-string>
+        </xsl:variable>
+        
+        <xsl:variable name="unit">
+            <xsl:choose>
+                <xsl:when test="$raw-unit != ''">
+                    <xsl:value-of select="$raw-unit"/>
+                </xsl:when>
+                <xsl:when test="$raw-value = '' and (following-sibling::sg:duration-unit)">
+                    <xsl:value-of select="following-sibling::sg:duration-unit/text()"/>
+                </xsl:when>
+                <xsl:when test="$raw-value = '' and (preceding-sibling::sg:duration-unit)">
+                    <xsl:value-of select="preceding-sibling::sg:duration-unit/text()"/>
+                </xsl:when>
+                
+            </xsl:choose>
+        </xsl:variable>
+        
+        <!--<xsl:variable name="value" select="xs:decimal(text())" as="xs:decimal"/>
+        <xsl:variable name="unit" select="following-sibling::sg:duration-unit/text()"/>-->
         
         <xsl:element name="duration" namespace="http://educations.com/XmlImport">
             
@@ -57,7 +94,7 @@
             
             <xsl:element name="specific" namespace="http://educations.com/XmlImport">
                 <xsl:attribute name="unit" select="$unit"/>
-                <xsl:attribute name="value" select="$value"/>
+                <xsl:attribute name="value" select="if (number($value) = number($value)) then (xs:decimal($value)) else ($value)"/>
             </xsl:element>
         </xsl:element>
     </xsl:template>
