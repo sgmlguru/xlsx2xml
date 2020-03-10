@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"
+    xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+    stylesheet="../../xslt/common/XLSX-UTIL_hyperlinks.xsl">
+    
+    <x:variable name="relationships">
+        <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+            <Relationship
+                Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink" 
+                Target="https://www.morleycollege.ac.uk/courses/14402-cache-early-years-workforce-early-years-educator-diploma-level-3/14304"
+                TargetMode="External"
+                Id="rId7"/>
+        </Relationships>
+    </x:variable>
+    
+    <x:scenario label="When encountering cells that contain a hyperlink referenced in Relationships">
+        <x:context mode="XLSX-UTIL_HYPERLINKS">
+            <workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" provider="Morley_College">
+                <sheets>
+                    <worksheet>
+                        <sheetData>
+                            <row r="3" ht="12.75" customHeight="0">
+                                <c s="3" t="inlineStr" r="A3"><v>CACHE Early Years Workforce (Early Years Educator) Diploma: Level 3</v></c>
+                                <c s="3" t="inlineStr" r="B3"><v>Level 3</v></c>
+                                <c s="4" t="inlineStr" r="C3"><v>Course URL</v></c>
+                                <c s="5" r="D3">
+                                    <v>71.0</v>
+                                </c>
+                            </row>
+                        </sheetData>
+                        
+                        <hyperlinks>
+                            <hyperlink ref="C3" r:id="rId7"/>
+                        </hyperlinks>
+                    </worksheet>
+                </sheets>
+                
+                <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+                    <Relationship
+                        Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink" 
+                        Target="https://www.morleycollege.ac.uk/courses/14402-cache-early-years-workforce-early-years-educator-diploma-level-3/14304"
+                        TargetMode="External"
+                        Id="rId7"/>
+                </Relationships>
+            </workbook>
+        </x:context>
+        
+        <x:expect label="those should be normalised">
+            <workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" provider="Morley_College">
+                <sheets>
+                    <worksheet>
+                        <sheetData>
+                            <row r="3" ht="12.75" customHeight="0">
+                                <c s="3" t="inlineStr" r="A3"><v>CACHE Early Years Workforce (Early Years Educator) Diploma: Level 3</v></c>
+                                <c s="3" t="inlineStr" r="B3"><v>Level 3</v></c>
+                                <c s="4" t="inlineStr" r="C3"><v>https://www.morleycollege.ac.uk/courses/14402-cache-early-years-workforce-early-years-educator-diploma-level-3/14304</v></c>
+                                <c s="5" r="D3">
+                                    <v>71.0</v>
+                                </c>
+                            </row>
+                        </sheetData>
+                        
+                        <hyperlinks>
+                            <hyperlink ref="C3" r:id="rId7"/>
+                        </hyperlinks>
+                    </worksheet>
+                </sheets>
+                
+                <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+                    <Relationship
+                        Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink" 
+                        Target="https://www.morleycollege.ac.uk/courses/14402-cache-early-years-workforce-early-years-educator-diploma-level-3/14304"
+                        TargetMode="External"
+                        Id="rId7"/>
+                </Relationships>
+            </workbook>
+        </x:expect>
+    </x:scenario>
+</x:description>
