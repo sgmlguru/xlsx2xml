@@ -61,8 +61,8 @@
     </xsl:template>
     
     
-    <!-- Delete first row since that's now a lookup -->
-    <xsl:template match="sml:row[sml:c][1]|sml:row[not(node())]" mode="XLSX2XML_STRUCTURE"/>
+    <!-- Delete first row with cells since that's now a lookup, also delete empty rows -->
+    <xsl:template match="sml:row[sml:c][1] | sml:row[not(node())]" mode="XLSX2XML_STRUCTURE"/>
     
     
     <!-- ID transform -->
