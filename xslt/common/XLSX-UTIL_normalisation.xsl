@@ -47,7 +47,7 @@
     </xsl:template>
     
     
-    <!-- Inline string -->
+    <!-- Inline string (NOTE: the text node is wrapped into a v element) -->
     <xsl:template match="sml:c[@t='inlineStr']" mode="XLSX-UTIL_NORMALISATION">
         <xsl:copy>
             <xsl:copy-of select="@*"/>
