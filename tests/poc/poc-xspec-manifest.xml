@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="file:/home/ari/Documents/repos/xproc-batch/xspec-tools/rng/xspec-manifest.rnc" type="application/relax-ng-compact-syntax"?>
+<tests
+    xmlns="http://www.sgmlguru.org/ns/xproc/steps"
+    manifest="../../pipelines/poc/poc-xlsx2xml-manifest.xml"
+    xml:base="/home/ari/Documents/repos/xlsx2xml/">
+    
+    <group>
+        <test xslt="xslt/common/XLSX-UTIL_normalisation.xsl" xspec="xspec/common/XLSX-UTIL_normalisation.xspec" description="Normalise shared strings."/>
+    </group>
+    
+</tests>

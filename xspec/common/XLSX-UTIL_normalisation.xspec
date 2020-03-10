@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"
+    stylesheet="../../xslt/common/XLSX-UTIL_normalisation.xsl">
+    
+    <x:variable name="sst">
+        <sst count="17647" uniqueCount="4451" xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+            <si>
+                <t>StartDate</t>
+            </si>
+            <si>
+                <t>EndDate</t>
+            </si>
+            <si>
+                <t>Site_Desc</t>
+            </si>
+            <si>
+                <t>LocationDesc</t>
+            </si>
+        </sst>
+    </x:variable>
+    
+    <x:scenario label="When encountering cells with shared strings">
+        <x:context mode="XLSX-UTIL_NORMALISATION">
+            <workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+                <sheets>
+                    <worksheet>
+                        <sheetData>
+                            <row r="1" spans="1:27">
+                                <c r="B1" t="s">
+                                    <v>0</v>
+                                </c>
+                                <c r="C1" t="s">
+                                    <v>1</v>
+                                </c>
+                                <c r="D1" t="s">
+                                    <v>2</v>
+                                </c>
+                                <c r="E1" t="s">
+                                    <v>3</v>
+                                </c>
+                            </row>
+                        </sheetData>
+                    </worksheet>
+                </sheets>
+                
+                <sst count="17647" uniqueCount="4451">
+                    <si>
+                        <t>StartDate</t>
+                    </si>
+                    <si>
+                        <t>EndDate</t>
+                    </si>
+                    <si>
+                        <t>Site_Desc</t>
+                    </si>
+                    <si>
+                        <t>LocationDesc</t>
+                    </si>
+                </sst>
+                
+            </workbook>
+        </x:context>
+
+        <x:expect label="those strings should be normalised">
+            <workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" provider="">
+                <sheets>
+                    <worksheet>
+                        <sheetData>
+                            <row r="1" spans="1:27">
+                                <c r="B1" t="s">
+                                    <v>StartDate</v>
+                                </c>
+                                <c r="C1" t="s">
+                                    <v>EndDate</v>
+                                </c>
+                                <c r="D1" t="s">
+                                    <v>Site_Desc</v>
+                                </c>
+                                <c r="E1" t="s">
+                                    <v>LocationDesc</v>
+                                </c>
+                            </row>
+                        </sheetData>
+                    </worksheet>
+                </sheets>
+                
+                <sst count="17647" uniqueCount="4451">
+                    <si>
+                        <t>StartDate</t>
+                    </si>
+                    <si>
+                        <t>EndDate</t>
+                    </si>
+                    <si>
+                        <t>Site_Desc</t>
+                    </si>
+                    <si>
+                        <t>LocationDesc</t>
+                    </si>
+                </sst>
+                
+            </workbook>
+        </x:expect>
+    </x:scenario>
+</x:description>
