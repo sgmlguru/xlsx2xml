@@ -17,9 +17,6 @@
     
     <!-- This does the top structures for the output -->
     
-    <!-- Generate mapping of cordinates -->
-    <!--<xsl:import href="XLSX2XML_map.xsl"/>-->
-    
     <xsl:variable name="providers" select="doc('../../mapping/providers.xml')/*"/>
     <xsl:variable name="current-provider" select="/*/@provider"/>
     <xsl:variable name="lookup" select="$providers//sg:provider[@id=$current-provider]"/>
@@ -55,9 +52,7 @@
     
     <xsl:template match="sml:sheetData" mode="XLSX2XML_STRUCTURE">
         <xsl:element name="courses" namespace="http://educations.com/XmlImport">
-            
-            <!-- Create a lookup from the first row with content -->
-            <!--<xsl:apply-templates select="sml:row[sml:c][1]" mode="XLSX2XML_MAP"/>-->
+            <!-- Column-to-exchange format lookup from the providers XML -->
             <xsl:copy-of select="$lookup"/>
             
             <!-- Rows 2 and on - copy for now -->
