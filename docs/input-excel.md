@@ -56,6 +56,7 @@ This lists suggested columns in the spreadsheet. Each of these is mapped to the 
 * Provider_URL (optional)
 * Course_Name
 * Course_ID
+* Course Type (open/scheduled, e-learning, vocational)
 * Course_Multiple_Occurence (true/false - indicates if the same course is offered multiple times)
 * Course_Description (HTML content)
 * Course_URL

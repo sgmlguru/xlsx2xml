@@ -33,8 +33,13 @@
 <!ELEMENT courses   (course+) >
 
 <!-- A course -->
-<!ELEMENT course    (course-field | uniqueIdentifier | course-link | qualification-type | remove | (%duration.content;) | (%location.content;) | (%event.content;) | (%category.content;))+ >
-<!ATTLIST course    uniqueIdentifier CDATA #REQUIRED >
+<!ELEMENT course    (course-name | course-field | uniqueIdentifier | course-link | qualification-type | remove | (%duration.content;) | (%location.content;) | (%event.content;) | (%category.content;))+ >
+<!ATTLIST course    uniqueIdentifier CDATA #REQUIRED
+                    courseType CDATA #IMPLIED >
+
+<!-- Course name -->
+<!ELEMENT course-name  (#PCDATA) >
+<!ATTLIST course-name  %cell.atts; >
 
 <!-- A generic course field -->
 <!ELEMENT course-field  (#PCDATA) >
