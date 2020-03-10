@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"
+    xmlns:fc="http://educations.com/XmlImport"
+    xmlns:sg="http://www.sgmlguru/ns/xproc/steps"
+    stylesheet="../../xslt/common/XLSX2XML_structure.xsl">
+    
+    <x:variable name="lookup">
+        <sg:provider id="Morley_College">...</sg:provider>
+    </x:variable>
+    
+    <x:scenario label="The workbook docx root element">
+        <x:context mode="XLSX2XML_STRUCTURE">
+            <workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" provider="Morley_College">...</workbook>
+        </x:context>
+        
+        <x:expect label="should be converted to the target ns import element and @version='3.0' added">
+            <fc:import version="3.0">...</fc:import>
+        </x:expect>
+    </x:scenario>
+    
+    
+    <x:scenario label="The worksheet element">
+        <x:context mode="XLSX2XML_STRUCTURE">
+            <workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" provider="Morley_College">
+                <worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" provider="Morley_College">...</worksheet>
+            </workbook>
+        </x:context>
+        
+        <x:expect label="should be converted to the target ns provider element and @uniqueIdentifier set to the root's @provider value">
+            <fc:import version="3.0">
+                <fc:provider uniqueIdentifier="Morley_College">...</fc:provider>
+            </fc:import>
+        </x:expect>
+    </x:scenario>
+    
+    
+    <x:scenario label="The sheetData element">
+        <x:context mode="XLSX2XML_STRUCTURE">
+            <sheetData>...</sheetData>
+        </x:context>
+        
+        <x:expect label="should be converted to the target ns courses wrapper, with $lookup (see global variable) added as first child">
+            <fc:courses>...</fc:courses>
+        </x:expect>
+    </x:scenario>
+    
+</x:description>

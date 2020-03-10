@@ -7,7 +7,8 @@
     
     <group>
         <test xslt="xslt/common/XLSX-UTIL_normalisation.xsl" xspec="xspec/common/XLSX-UTIL_normalisation.xspec" description="Normalise shared strings."/>
-        <test xslt="xslt/common/XLSX-UTIL_hyperlinks.xsl" xspec="xspec/common/XLSX-UTIL_hyperlinks.xspec" description="Normalise rferenced hyperlinks."/>
+        <test xslt="xslt/common/XLSX-UTIL_hyperlinks.xsl" xspec="xspec/common/XLSX-UTIL_hyperlinks.xspec" description="Normalise referenced hyperlinks."/>
+        <test xslt="xslt/common/XLSX2XML_structure.xsl" xspec="xspec/common/XLSX2XML_structure.xspec" description="Convert main structures."/>
     </group>
     
 </tests>
