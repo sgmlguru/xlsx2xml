@@ -12,6 +12,7 @@
     
     <group description="Conversion steps">
         <test xslt="xslt/common/XLSX2XML_structure.xsl" xspec="xspec/common/XLSX2XML_structure.xspec" description="Convert main structures."/>
+        <test xslt="xslt/common/XLSX2XML_dates.xsl" xspec="xspec/common/XLSX2XML_dates.xspec" description="Convert ECMA 376 dates to xs:dateTime."/>
     </group>
     
 </tests>

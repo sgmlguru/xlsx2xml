@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description
+    xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"
+    xmlns:fc="http://educations.com/XmlImport"
+    xmlns:sg="http://www.sgmlguru/ns/xproc/steps"
+    stylesheet="../../xslt/common/XLSX2XML_dates.xsl">
+    
+    <x:scenario label="When converting a date in ECMA-376 format">
+        <x:call function="sg:todate">
+            <x:param select="43836"/>
+        </x:call>
+        
+        <x:expect label="a readable dateTime value should result" select="xs:dateTime('2020-01-08T00:00:00')"/>
+    </x:scenario>
+    
+</x:description>
