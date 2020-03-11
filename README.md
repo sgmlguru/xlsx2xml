@@ -41,7 +41,7 @@ Easiest here is to run `xproc/extract-from-xlsx.xpl` from the [`xproc-batch`](ht
 
 ## Tests
 
-Some of the pipeline steps have accompanying XSpec unit tests. These are listed in a testing manifest file, `testing/poc/poc-xspec-manifest.xml`. If the XProc option `run-xspecs` is set to 'true', the pipeline will run the XSpec tets in the pipeline.
+Some of the pipeline steps have accompanying XSpec unit tests. These are listed in a test manifest file, `tests/poc/poc-xspec-manifest.xml`. If the XProc option `run-xspecs` is set to 'true', the pipeline will run the XSpec tets in the pipeline.
 
 **NOTE! In order to run the tests, the `debug` option must be set to 'true' as well!**
 
