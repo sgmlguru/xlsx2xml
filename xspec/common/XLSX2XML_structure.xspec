@@ -42,7 +42,29 @@
         </x:context>
         
         <x:expect label="should be converted to the target ns courses wrapper, with $lookup (see global variable) added as first child">
-            <fc:courses>...</fc:courses>
+            <fc:courses><sg:provider id="Morley_College">...</sg:provider>...</fc:courses>
+        </x:expect>
+    </x:scenario>
+    
+    
+    <x:scenario label="Empty rows, as well as the first non-empty row, in the sheetData element">
+        <x:context mode="XLSX2XML_STRUCTURE">
+            <sheetData>
+                <row><c>1</c></row>
+                <row><c>2</c></row>
+                <row><c>3</c></row>
+                <row/>
+                <row><c>5</c></row>
+            </sheetData>
+        </x:context>
+        
+        <x:expect label="should be deleted">
+            <fc:courses>
+                <sg:provider id="Morley_College">...</sg:provider>
+                <row><c>2</c></row>
+                <row><c>3</c></row>
+                <row><c>5</c></row>
+            </fc:courses>
         </x:expect>
     </x:scenario>
     

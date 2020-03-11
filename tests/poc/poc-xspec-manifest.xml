@@ -5,9 +5,12 @@
     manifest="../../pipelines/poc/poc-xlsx2xml-manifest.xml"
     xml:base="/home/ari/Documents/repos/xlsx2xml/">
     
-    <group>
+    <group description="XLSX normalisation steps">
         <test xslt="xslt/common/XLSX-UTIL_normalisation.xsl" xspec="xspec/common/XLSX-UTIL_normalisation.xspec" description="Normalise shared strings."/>
         <test xslt="xslt/common/XLSX-UTIL_hyperlinks.xsl" xspec="xspec/common/XLSX-UTIL_hyperlinks.xspec" description="Normalise referenced hyperlinks."/>
+    </group>
+    
+    <group description="Conversion steps">
         <test xslt="xslt/common/XLSX2XML_structure.xsl" xspec="xspec/common/XLSX2XML_structure.xspec" description="Convert main structures."/>
     </group>
     
