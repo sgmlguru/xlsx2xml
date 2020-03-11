@@ -34,4 +34,6 @@ Each item identifies a heading row cell naming a column in the Excel source. `@c
 
 The XSLT acts on a normalised XML version of the input Excel spreadsheet. Normally, this is provided by an XProc step but the XML could also be extracted from the Excel zip archive manually.
 
+Easiest here is to run `xproc/extract-from-xlsx.xpl` from the [`xproc-batch`](https://github.com/sgmlguru/xproc-batch) repository - see the shell script examples in that repository.
+
 
