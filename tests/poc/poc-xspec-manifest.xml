@@ -13,6 +13,7 @@
     <group description="Conversion steps">
         <test xslt="xslt/common/XLSX2XML_structure.xsl" xspec="xspec/common/XLSX2XML_structure.xspec" description="Convert main structures."/>
         <test xslt="xslt/common/XLSX2XML_dates.xsl" xspec="xspec/common/XLSX2XML_dates.xspec" description="Convert ECMA 376 dates to xs:dateTime."/>
+        <test xslt="xslt/common/XLSX2XML_locations.xsl" xspec="xspec/common/XLSX2XML_locations.xspec" description="Convert location info to exc, group it in locations wrapper."/>
     </group>
     
 </tests>
