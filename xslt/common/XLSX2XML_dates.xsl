@@ -20,6 +20,9 @@
     <xsl:output method="xml" indent="yes"/>
     
     
+    <xsl:variable name="exc-date-elements" select="('duration-start','duration-end')"/>
+    
+    
     <xsl:template match="/">
         <xsl:apply-templates select="node()" mode="XLSX2XML_DATES"/>
     </xsl:template>
@@ -28,7 +31,7 @@
     <xsl:template match="fc:course" mode="XLSX2XML_DATES">
         <xsl:variable name="date-fields">
             <fields>
-                <xsl:apply-templates select="preceding-sibling::sg:provider/sg:item[matches(@target,'^(duration-start)$')] | preceding-sibling::sg:provider/sg:item[matches(@target,'^(duration-end)$')]" mode="XLSX2XML_DATES"/>
+                <xsl:apply-templates select="preceding-sibling::sg:provider/sg:item[@target = $exc-date-elements]" mode="XLSX2XML_DATES"/>
             </fields>
         </xsl:variable>
         <xsl:copy copy-namespaces="no">
