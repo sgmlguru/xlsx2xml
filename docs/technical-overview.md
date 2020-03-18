@@ -5,7 +5,7 @@ This describes the overall technical solution for handling course provider infor
 
 ## Expected Input Format
 
-Currently, we expect the input file format from a provider to be Excel spreadsheets in Office 2010 or newer format, using a single worksheet. A single row in the Excel spreadsheet is assumed to be a single course, and the columns map to a single piece of information about that course, for example, course ID, course name, location, start date, end date, and so on.
+Currently, the input file format from a provider needs to be Excel spreadsheets in Office 2010 or newer format, using a single worksheet. A single row in the Excel spreadsheet is assumed to be a single course, and the columns map to a single piece of information about that course, for example, course ID, course name, location, start date, end date, and so on.
 
 If the provider uses a predefined Excel template, this is handled by default.
 
@@ -19,11 +19,13 @@ The Excel file is converted to the output XML Import 3.0 format in two main stag
 
 The columns in the spreadsheet are mapped to an intermediate XML format using a provider-specific mapping file in XML format. This mapping file is used by the conversion pipeline to address provider-specific differences in the source format, so the pipeline itself consists of three main parts:
 
-1. Initial tweaking and processing of the Excel XML format, for example, to normalise shared strings and hyperlinks.
+1. Initial tweaking and processing of the Excel XML format, for example, to normalise shared strings and hyperlinks, and to remove unneeded content.
 2. Conversion from Excel XML markup to an intermediate XML format using the provider-specific mapping. This requires a complete mapping between the input Excel columns and the intermediate XML format.
 3. Conversion of the intermediate XML to the output XML import format.
 
-It follows that if the provider using a predefined Excel template with preset column names, provided by EMG and filled in by the provider, there's no need to map anything - the mapping already exists.
+It follows that if the provider is using a predefined Excel template with preset column names, provided by EMG and filled in by the provider, there's no need to map anything - the mapping already exists. Importing an Excel file can then be done automatically.
+
+The same is true if the provider has previously imported an Excel file. The mapping has already been done and so the new import is automatic.
 
 
 ## Mapping Provider Info
@@ -44,11 +46,11 @@ The provider mapping file is an XML file that looks like this:
 
 ```
 
-There should be one `provider` element per college, assuming that the college always uses the same Excel format, with the same number of columns, column nams, etc. 
+There should be one `provider` element per college, assuming that the college always uses the same Excel format, with the same number of columns, column nams, etc. If a college uses several input formats, there needs to be one `provider` element per format.
 
-Every column is mapped to an `item` element with three attributes:
+Every Excel column is mapped to an `item` element with three attributes:
 
-* `@coord` is the Excel cell coordinate
+* `@coord` is the Excel column coordinate, i.e. 'A', 'B', etc
 * `@source` is the column heading in the source Excel
 * `@target` is the matching element in the intermediate XML format
 
@@ -83,6 +85,13 @@ Here's a provider map for Morley College, generated from the Excel source and ma
 Please note that this is a live example from the proof of concept implementation and subject to change.
 
 
+## Intermediate XML Format
+
+The intermediate XML format used by the conversion pipeline exists to separate concerns - different providers will need different conversions to that intermediate format, but everyone can then use the same conversion from the intermediate fomrat to the target format.
+
+The intermediate XML format is described by a Document Type Definition (DTD) in the [XLSX2XML repository](TBA). The structure is mostly flat and only intended for processing. It should never be manually edited.
+
+
 ## eXist-DB Solution
 
 The provider import application is intended to run in [eXist-DB](http://exist-db.org/exist/apps/homepage/index.html), an open source XML database, the main reason being that the application is wholly developed using XML technology and should therefore run in a native XML environment that supports those technologies out-of-the-box. Additionally, eXist-DB provides a clean REST interface to communicate with its surroundings and is easy to integrate with other tools in the XML stack.
@@ -105,4 +114,10 @@ If course information needs to be updated, there are several options:
     - The XML file is edited in an XML editor auch as *oXygen Author*, using an authoring framework for easy WYSIWY-like editing. oXygen Author can access eXist-DB directly and is itself available as a web application, eliminating the need for a client solution. From a technical point of view, This is by far the safest and most robust solution.
     - The XML file is edited by EMG using their tools, and then reimported to eXist-DB.
 
+
+## Repositories
+
+* [xproc-batch](TBA) provides the infrastructure for handling pipelined conversions
+* [xlsx2xml](TBA) contains the actual conversion pipeline code
+* [xslt-pipeline](TBA) is an example pipeline complete with example input, manifest and XSLT stylesheets, intended for developers wishing to understand the pipeline mechanics
 
