@@ -3,12 +3,11 @@
 This contains various info and notes about eXist-DB-related matters.
 
 
-## Install
+## Calabash Module for eXist
 
-* eXist-DB 4.6.1 (the Calabash module doesn't like 5.x and I don't know what's wrong)
+* eXist-DB 5.2.0
 * xsltforms
-* XSLTForms Demo
-* XProc Calabash module
+* XProc Calabash module - you'll need to clone the Git repo at (https://github.com/eXist-db/xquery-xproc-xmlcalabash-module) and build the module from source using `mvn clean package -DskipTests`
 
 This XQuery returns XML (the module itself returns a map, i.e. `map {"result":"<p>markup</p>"}`, so we need to read the map entry's value and parse that as XML using `parse-xml($out?result)`):
 
@@ -30,3 +29,14 @@ Here, `$passthrough` is an XProc option, passed through to the XSLT as a paramet
 
 Erik Siegel's summarised his experiments with the module at (https://github.com/eXist-db/xquery-xproc-xmlcalabash-module/blob/master/docs/xproc/xproc.md).
 
+
+### Conclusions
+
+The module is not ready for prime time, as quite a few steps simply won't work in eXist-DB.
+
+
+## XQuery-based
+
+It's relatively easy to do an XQ module that runs the pipeline as listed by a manifest. See the `xquery` contents for details - `modules` contains an XQuery module with the necessary functions.
+
+We'll also need a function that unzips and normalises the Excel xlsx sources.
