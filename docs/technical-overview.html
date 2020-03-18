@@ -80,18 +80,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <nav id="TOC">
 <ul>
 <li><a href="#technical-overview">Technical Overview</a><ul>
+<li><a href="#repositories">Repositories</a></li>
 <li><a href="#expected-input-format">Expected Input Format</a></li>
 <li><a href="#excel-to-xml-conversion">Excel to XML Conversion</a></li>
 <li><a href="#mapping-provider-info">Mapping Provider Info</a></li>
 <li><a href="#intermediate-xml-format">Intermediate XML Format</a></li>
 <li><a href="#exist-db-solution">eXist-DB Solution</a></li>
 <li><a href="#handling-updates">Handling Updates</a></li>
-<li><a href="#repositories">Repositories</a></li>
 </ul></li>
 </ul>
 </nav>
 <h1 id="technical-overview">Technical Overview</h1>
 <p>This describes the overall technical solution for handling course provider information.</p>
+<h2 id="repositories">Repositories</h2>
+<p>The solution uses the first two repositories, below. The third repository is an <em>example pipeline</em> that attempts to illustrate the principles behind XSLT pipelines.</p>
+<ul>
+<li><a href="https://github.com/sgmlguru/xproc-batch">xproc-batch</a> provides the infrastructure for handling pipelined conversions</li>
+<li><a href="https://github.com/sgmlguru/xlsx2xml">xlsx2xml</a> contains the actual conversion pipeline code</li>
+<li><a href="https://github.com/sgmlguru/xslt-pipelines">xslt-pipeline</a> is an example pipeline complete with example input, manifest and XSLT stylesheets, intended for developers wishing to understand the pipeline mechanics</li>
+</ul>
 <h2 id="expected-input-format">Expected Input Format</h2>
 <p>Currently, the input file format from a provider needs to be Excel spreadsheets in Office 2010 or newer format, using a single worksheet. A single row in the Excel spreadsheet is assumed to be a single course, and the columns map to a single piece of information about that course, for example, course ID, course name, location, start date, end date, and so on.</p>
 <p>If the provider uses a predefined Excel template, this is handled by default.</p>
@@ -174,12 +181,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The XML file is edited in an XML editor auch as <em>oXygen Author</em>, using an authoring framework for easy WYSIWY-like editing. oXygen Author can access eXist-DB directly and is itself available as a web application, eliminating the need for a client solution. From a technical point of view, This is by far the safest and most robust solution.</li>
 <li>The XML file is edited by EMG using their tools, and then reimported to eXist-DB.</li>
 </ul></li>
-</ul>
-<h2 id="repositories">Repositories</h2>
-<ul>
-<li><a href="TBA">xproc-batch</a> provides the infrastructure for handling pipelined conversions</li>
-<li><a href="TBA">xlsx2xml</a> contains the actual conversion pipeline code</li>
-<li><a href="TBA">xslt-pipeline</a> is an example pipeline complete with example input, manifest and XSLT stylesheets, intended for developers wishing to understand the pipeline mechanics</li>
 </ul>
 </body>
 </html>

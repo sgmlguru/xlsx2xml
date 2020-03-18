@@ -3,6 +3,15 @@
 This describes the overall technical solution for handling course provider information.
 
 
+## Repositories
+
+The solution uses the first two repositories, below. The third repository is an *example pipeline* that attempts to illustrate the principles behind XSLT pipelines.
+
+* [xproc-batch](https://github.com/sgmlguru/xproc-batch) provides the infrastructure for handling pipelined conversions
+* [xlsx2xml](https://github.com/sgmlguru/xlsx2xml) contains the actual conversion pipeline code
+* [xslt-pipeline](https://github.com/sgmlguru/xslt-pipelines) is an example pipeline complete with example input, manifest and XSLT stylesheets, intended for developers wishing to understand the pipeline mechanics
+
+
 ## Expected Input Format
 
 Currently, the input file format from a provider needs to be Excel spreadsheets in Office 2010 or newer format, using a single worksheet. A single row in the Excel spreadsheet is assumed to be a single course, and the columns map to a single piece of information about that course, for example, course ID, course name, location, start date, end date, and so on.
@@ -114,10 +123,4 @@ If course information needs to be updated, there are several options:
     - The XML file is edited in an XML editor auch as *oXygen Author*, using an authoring framework for easy WYSIWY-like editing. oXygen Author can access eXist-DB directly and is itself available as a web application, eliminating the need for a client solution. From a technical point of view, This is by far the safest and most robust solution.
     - The XML file is edited by EMG using their tools, and then reimported to eXist-DB.
 
-
-## Repositories
-
-* [xproc-batch](TBA) provides the infrastructure for handling pipelined conversions
-* [xlsx2xml](TBA) contains the actual conversion pipeline code
-* [xslt-pipeline](TBA) is an example pipeline complete with example input, manifest and XSLT stylesheets, intended for developers wishing to understand the pipeline mechanics
 
