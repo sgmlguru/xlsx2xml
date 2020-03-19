@@ -2,6 +2,10 @@
 <?xml-model href="../../../xproc-batch/xproc-tools/schemas/manifest.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <manifest xmlns="http://www.corbas.co.uk/ns/transforms/data" xml:base=".">
     
+    <group description="eXist-DB unzip output massaging" xml:base="../../xslt/exist-db/">
+        <item href="EXIST-DB_rearrange.xsl" description="Removes wrapper and moves content aorund to match XProc unarchival"/>
+    </group>
+    
     <group description="XLSX normalisation and cleanup steps" xml:base="../../xslt/common/">
         <item href="XLSX-UTIL_remove-empty.xsl" description="Remove empty sheet rows"/>
         <item href="XLSX-UTIL_normalisation.xsl" description="Include shared strings inline"/>
